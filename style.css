@@ -1,0 +1,20 @@
+/*
+Theme Name: chroma generic
+Theme URI: http://wordpress.org/themes/chroma
+Author: Pierre-Alexandre Poirier
+Author URI: http://papoirier.org/
+Description: Full-screen, color-blocked theme, built on top of Bootstrap
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: generic, bootstrap
+Text Domain: chroma
+
+This theme, like WordPress, is licensed under the GPL.
+*/
+
+@import url("css/styles.css");
+
+#wpadminbar {
+	bottom:0px;
+}
