@@ -47,7 +47,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		</tfoot>
 	</table>
 
-	<div id="payment">
+	<div id="payment" class="radio">
 		<?php if ( $order->needs_payment() ) : ?>
 		<h3><?php _e( 'Payment', 'woocommerce' ); ?></h3>
 		<ul class="payment_methods methods">

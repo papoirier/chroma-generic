@@ -25,8 +25,8 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body data-spy="scroll" data-target="#navbar" data-offset="10">
-  <!-- MENU - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <body data-spy="scroll" data-target="#navbar" data-offset="10" <?php if(is_home()) {echo "class=\"home\"";} ?>>
+  <!-- NAV - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <nav class="navbar navbar-default navbar-fixed-top">
       <div id="navcolor" class="intro">
         <div class="container">

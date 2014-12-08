@@ -40,17 +40,79 @@ foreach ( $includes as $i ) {
   locate_template( $i, true );
 }
 
+// GLOBAL ------------------------------------------------------
+
+// PAGES -------------------------------------------------------
+
+add_action('init', 'page_excerpt');
+function page_excerpt() {
+  add_post_type_support( 'page', 'excerpt' );
+}
+
+// big files
+@ini_set( 'upload_max_size' , '64M' );
+@ini_set( 'post_max_size', '64M');
+@ini_set( 'max_execution_time', '300' );
+
+// hide admin bar
+show_admin_bar(false);
+
+add_theme_support( 'post-thumbnails' );
+
+function print_attributes($name, $count) {
+  //echo 'id="'.$name.'" class="full p-'.$count.'"';
+}
+
 // to get proper large images
 if ( ! isset( $content_width ) )
 	$content_width = 1024;
 
 // removing p tags
-remove_filter( 'the_content', 'wpautop' );
+//remove_filter( 'the_content', 'wpautop' );
 
-// hide admin bar
-show_admin_bar(false);
+// remove class from the_post_thumbnail
+add_filter('post_thumbnail_html', 'the_post_thumbnail_remove_class');
+function the_post_thumbnail_remove_class($output) {
+        $output = preg_replace('/class=".*?"/', '', $output);
+        return $output;
+}
 
-// scripts
+// add img-responsive class to images
+add_filter( 'post_thumbnail_html', 'wpc_add_image_responsive_class', 10 );
+//add_filter( 'the_content','wpc_add_image_responsive_class',10 );  
+function wpc_add_image_responsive_class( $html ){  
+  $classes = 'img-responsive'; // separated by spaces, e.g. 'img image-link'  
+  
+  // check if there are already classes assigned to the anchor  
+  if ( preg_match('/<img.*? class="/', $html) ) {  
+    $html = preg_replace('/(<img.*? class=" .*?)(".*?\="">)/', '$1 ' . $classes . ' $2', $html);  
+  } else {  
+    $html = preg_replace('/(<img.*?)(\>)/', '$1 class="' . $classes . '" $2', $html);  
+  }  
+  // remove dimensions from images,, does not need it!  
+  $html = preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );  
+  return $html;  
+}  
+
+
+
+// LANGUAGE SWITCHER ------------------------------------
+
+function icl_post_languages(){
+  $languages = icl_get_languages('skip_missing=1');
+  if(1 < count($languages)){
+    foreach($languages as $l){
+      if(!$l['active']) $langs[] = '<a href="'.$l['url'].'">'.$l['native_name'].'</a>';
+    }
+    echo join(', ', $langs);
+  }
+}
+
+
+
+// SCRIPTS ------------------------------------------------------
+
+add_action( 'wp_enqueue_scripts', 'bootstrap_script' );
 function bootstrap_script() {
 	wp_enqueue_script( 
 		'bootstrap', 
@@ -60,28 +122,17 @@ function bootstrap_script() {
 		true 
 	);
 }
+
+add_action( 'wp_enqueue_scripts', 'custom_script' );
 function custom_script() {
 	wp_enqueue_script( 
 		'custo', 
-		get_stylesheet_directory_uri() . '/js/chroma.js', 
+		get_stylesheet_directory_uri() . '/js/scripts.js', 
 		array('jquery'), 
 		'1.0.0', 
 		true 
 	);
 }
-add_action( 'wp_enqueue_scripts', 'bootstrap_script' );
-add_action( 'wp_enqueue_scripts', 'custom_script' );
-
-// ------------------------------------------------------
-
-add_theme_support( 'post-thumbnails' );
-
-// ------------------------------------------------------
-
-function print_attributes($name, $count) {
-	//echo 'id="'.$name.'" class="full p-'.$count.'"';
-}
-
 
 // ======================================================= //
 
@@ -100,14 +151,7 @@ remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wra
 add_action('woocommerce_after_main_content', 'my_theme_wrapper_end', 10);
 
 // tell woocommerce not to use its style sheets
-//add_filter( 'woocommerce_enqueue_styles', '__return_false' );
-add_filter( 'woocommerce_enqueue_styles', 'jk_dequeue_styles' );
-function jk_dequeue_styles( $enqueue_styles ) {
-  unset( $enqueue_styles['woocommerce-general'] );  // Remove the gloss
-  unset( $enqueue_styles['woocommerce-layout'] );   // Remove the layout
-  unset( $enqueue_styles['woocommerce-smallscreen'] );  // Remove the smallscreen optimisation
-  return $enqueue_styles;
-}
+add_filter( 'woocommerce_enqueue_styles', '__return_false' );
 
 
 // PRODUCT PAGE ----------------------------------------
@@ -138,50 +182,7 @@ function remove_loop_button(){
 add_action('init','remove_loop_button');
 
 
-
-
-// LANGUAGE SWITCHER ------------------------------------
-
-function icl_post_languages(){
-  $languages = icl_get_languages('skip_missing=1');
-  if(1 < count($languages)){
-    foreach($languages as $l){
-      if(!$l['active']) $langs[] = '<a href="'.$l['url'].'">'.$l['native_name'].'</a>';
-    }
-    echo join(', ', $langs);
-  }
-}
-
-
-
-// remove class from the_post_thumbnail ------------------------------
-
-function the_post_thumbnail_remove_class($output) {
-        $output = preg_replace('/class=".*?"/', '', $output);
-        return $output;
-}
-add_filter('post_thumbnail_html', 'the_post_thumbnail_remove_class');
-
-function wpc_add_image_responsive_class( $html ){  
-  $classes = 'img-responsive img-circle'; // separated by spaces, e.g. 'img image-link'  
-  
-  // check if there are already classes assigned to the anchor  
-  if ( preg_match('/<img.*? class="/', $html) ) {  
-    $html = preg_replace('/(<img.*? class=" .*?)(".*?\="">)/', '$1 ' . $classes . ' $2', $html);  
-  } else {  
-    $html = preg_replace('/(<img.*?)(\>)/', '$1 class="' . $classes . '" $2', $html);  
-  }  
-  // remove dimensions from images,, does not need it!  
-  $html = preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );  
-  return $html;  
-}  
-//add_filter( 'the_content','wpc_add_image_responsive_class',10 );  
-add_filter( 'post_thumbnail_html', 'wpc_add_image_responsive_class', 10 );
-
-
 // CART --------------------------------------------------
-
-
 
 // removing the price range
 add_filter('woocommerce_variable_price_html','custom_from',10);

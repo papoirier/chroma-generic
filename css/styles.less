@@ -6,6 +6,7 @@
 @lightgray: 		#F1F1F1;
 @white: 			rgba(255, 255, 255, 0.7);
 @darkgray:			rgb(51, 51, 51);
+@midgray:			rgb(200,200,200);
 
 // TYPOGRAPHY -----------------------------
 
@@ -79,10 +80,8 @@ h3 {
 h4 {
 	font-size: @font-size-h4;
 }
-h5, p span.sc {
-	font-size: @font-size-h5;
-	font-family: "MarkScWeb";
-	text-transform: lowercase;
+h5, p span.sc, .sc, li.sc {
+	&:extend(.small-caps-th);
 	letter-spacing: 1px;
 	//color: @lightgray;
 }
@@ -105,22 +104,47 @@ strong {
 	}
 }
 
+.small-caps-th {
+	text-transform: lowercase;
+	font-family: 'MarkScWeb';
+	font-weight: normal;
+}
+
 // -------------------------------------
-nav.navbar {
+
+
+#intro {
+	background-color: yellow;
+	background: url('../img/landing.png') no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
 	
+
+
+nav.navbar {
 	background-color: @white;
 	border: none;
 	min-height: 40px;
 }
 
 
-// NAV  ------------------------------
+// NAV  // ------------------------------
 
 
-//  BODY  -----------------------------
+//  BODY  // -----------------------------
 
 .top-pad {
 	margin-top: 5em;
+}
+
+// HOME // -------------------------------
+
+body.home section {
+	min-height: 300px;
+	padding-top: 2em;
 }
 
 // SHOP -------------------------------
@@ -135,9 +159,9 @@ td.label {
 	color: @darkgray;
 	margin: 0 0.5em 0 0;
 	padding: 0;
-	label {
-		font-weight: normal;
-	}
+}
+td.label label {
+	font-weight: normal;
 }
 
 // select button
@@ -200,7 +224,6 @@ span.amount {
 	//font-size: @font-size-h3;
 }
 
-
 .quantity {
 	margin: 0 0 1em 0;
 	input {
@@ -253,19 +276,15 @@ td.product-quantity > div.quantity {
 }
 
 .actions {
-	background-color: orange;
 }
 
 .cart-collaterals {
-	background-color: yellow;
 	margin: 2em 0;
 }
 
 .cart-totals {
 	th {
-		text-transform: lowercase;
-		font-family: 'MarkScWeb';
-		font-weight: normal;
+		&:extend(.small-caps-th);
 	}
 }
 
@@ -274,6 +293,8 @@ tr.cart-subtotal {
 		//background-color: red;
 	}
 }
+
+@dropdown-width: 180px;
 
 #customer_details {
 	label {
@@ -286,19 +307,189 @@ tr.cart-subtotal {
 		margin-right: 0.5em;
 	}
 	#billing_country_chosen {
-		width: 300px;
-	}
-
-	.chosen-drop {
-		//background-color: red;
-		//border: none;
+		width: @dropdown-width;
 	}
 	li.highlighted {
 		background-color: @bootstrap-blue;
 		background-image: none;
 	}
+	ul.chosen-results {
+		text-align: left;
+		margin: 0;
+		padding: 0;
+	}
+	li {
+		padding: 6px 5px;
+	}
+	a, ul, li {
+		text-align: left !important;
+	}
+
+	a.chosen-single, .chosen-drop {
+		width: @dropdown-width;
+		font-size: @font-size-base;
+		
+	}
+
+	a.chosen-single {
+		background-image: none;
+		background: transparent;
+		border: 1px solid #ccc;
+		box-shadow: none;
+		color: #333;
+		background-color: #fff;
+		border-radius: 4px;
+		display: inline-block;
+		padding: 6px 12px;
+		margin: 0;
+		font-size: @font-size-base;
+		font-weight: normal;
+		line-height: 1.42857143;
+		text-align: center;
+		white-space: nowrap;
+		vertical-align: middle;
+		cursor: pointer;
+		height: 34px;
+		div > b {
+			background-image: none !important;
+			display: inline-block;
+			width: 0;
+			height: 0;
+			vertical-align: middle;
+			border-top: 4px solid;
+			border-right: 4px solid transparent;
+			border-left: 4px solid transparent;
+			margin: 10px 10px 0 0;
+		}
+	}
+
+	.chosen-drop {
+		background-image: none;
+		background-color: #fff;
+		border: 1px solid #ccc;
+		border-top: none;
+		margin-top: -6px;
+		padding-top: 5px;
+		box-shadow: none;
+	}
 }
 
+input#place_order {
+	background-image: none;
+	background: transparent;
+	border: 1px solid #ccc;
+	box-shadow: none;
+	color: #333;
+	background-color: #fff;
+	border-radius: 4px;
+	display: inline-block;
+	padding: 6px 12px;
+	margin: 0;
+	font-size: @font-size-base;
+	font-weight: normal;
+	line-height: 1.42857143;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	cursor: pointer;
+	//height: 34px;
+}
+
+ul, li {
+	padding-left: 0;
+	list-style-type: none;
+	text-decoration: none;
+}
+
+#payment {
+	ul, ul.payment_methods {
+		// padding-left: 0;
+		// list-style-type: none;
+		// text-decoration: none;
+		li label {
+			font-weight: normal;
+			//padding-left: 0;
+		}
+	}
+
+}
+#order_review {
+	tfoot th {
+		&:extend(.small-caps-th);	
+	}
+	thead th {
+		//font-weight: bold;
+	}
+}
+
+.payment_method_paypal {
+	a.about_paypal {
+		font-size: 80%;
+		letter-spacing: 0.5px;
+		margin-left: 1em;
+	}
+	.payment_box {
+		font-size: 80%;
+		letter-spacing: 0.5px;
+	}
+}
+
+// invalid fields
+.woocommerce-invalid, .woocommerce-invalid-required-field {
+	color: #a94442;
+	input {
+		border-color: @red;
+	}
+}
+
+.alert {
+	border: 1px solid transparent;
+	border-radius: 4px;
+	background-color: #f2dede;
+  	border-color: #ebccd1;
+}
+
+ul.woocommerce-error {
+	padding: @font-size-base*1.6 @font-size-base*2;
+	margin-top: @font-size-base*2;
+	color: @red;
+	list-style-type: none;
+	text-decoration: none;
+	&:extend(.alert);
+	li strong{
+		&:extend(.small-caps-th);
+	}
+}
+
+// -------
+
+.btn-edit-page {
+	margin: 2em 0;
+	background-color: @bootstrap-blue;
+	a {
+		color: #FFF;
+		:hover {
+			text-decoration: none;
+		}
+	}
+}
+
+// FOOTER ---------------------------------
+
+footer {
+	background-color: @midgray;
+	.container {
+		margin-top: 2em;
+		padding-top: 2em;
+		padding-bottom: 1.5em;
+	}
+	li.subtitle {
+		&:extend(.small-caps-th);
+		font-weight: bold;
+		letter-spacing: 1px;
+		color: @lightgray;
+	}
+}
 
 /* SCREEN SIZE SPECIFICS ------------------------------------- */ 
 

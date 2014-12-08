@@ -38,7 +38,9 @@ if ( ! empty( $_SERVER['SCRIPT_FILENAME'] ) && basename( __FILE__ ) == basename(
 					<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'woothemes' ), 'after' => '</div>' ) ); ?>
                 </section> <!-- .row.content -->
                 <div class="row">
-				    <?php edit_post_link( __( 'Edit page', 'woothemes' ), '<span class="small">', '</span>' ); ?>
+                    <div class="col-md-12">
+				        <?php edit_post_link( __( 'Edit page', 'woothemes' ), '<h5 class="btn btn-default btn-edit-page">', '</h5>' ); ?>
+                    </div>
                 </div>
             </div><!-- .container.top-pad -->
         </article><!-- .post -->
