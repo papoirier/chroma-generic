@@ -67,6 +67,6 @@ if ( ! empty( $_SERVER['SCRIPT_FILENAME'] ) && basename( __FILE__ ) == basename(
         
 <?php 
 woo_main_after(); 
-get_sidebar(); 
+//get_sidebar(); 
 get_footer(); 
 ?>

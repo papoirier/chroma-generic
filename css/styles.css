@@ -36,22 +36,28 @@
 }
 body {
   font-family: "MarkWeb", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
 }
 h1 {
-  font-size: 36px;
+  font-size: 41px;
   font-weight: bold;
 }
 h2 {
-  font-size: 30px;
+  font-size: 34px;
   font-weight: bold;
 }
 h3 {
-  font-size: 24px;
+  font-size: 23px;
   font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 h4 {
-  font-size: 18px;
+  font-size: 20px;
+  line-height: 28.8px;
+}
+h4 p {
+  margin-bottom: 14.4px;
 }
 h5,
 p span.sc,
@@ -60,7 +66,7 @@ li.sc {
   letter-spacing: 1px;
 }
 h6 {
-  font-size: 12px;
+  font-size: 14px;
 }
 strong {
   font-weight: bold;
@@ -84,37 +90,88 @@ footer li.subtitle {
   font-family: 'MarkScWeb';
   font-weight: normal;
 }
-#intro {
-  background-color: yellow;
-  background: url('../img/landing.png') no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+a,
+a:link {
+  color: #646464;
+  text-decoration: none;
+}
+a:hover {
+  color: #828282;
+  text-decoration: none;
+}
+a:visited {
+  color: #646464;
+  text-decoration: none;
+}
+a:active {
+  color: #646464;
+  text-decoration: none;
 }
 nav.navbar {
   background-color: rgba(255, 255, 255, 0.7);
   border: none;
   min-height: 40px;
 }
-.top-pad {
-  margin-top: 5em;
-}
 body.home section {
   min-height: 300px;
   padding-top: 2em;
+  border-bottom: 3px solid #FAFAFA;
+}
+.top-pad {
+  margin-top: 5em;
+}
+#intro {
+  background: url('../img/landing.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+#intro img,
+#the-felt img,
+img {
+  max-width: 100%;
+}
+.intro-brand {
+  margin-top: 10%;
+  margin-bottom: 2em;
+}
+img.wiggle {
+  margin: 3.5em 0 1em 0;
+  clear: both;
+}
+.panel,
+.panel-group,
+.panel-group .panel-default,
+.panel-group .panel-heading,
+.panel-group .panel-heading + .panel-collapse > .panel-body,
+.panel-group .panel-body,
+.panel-group ol {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  border-radius: 0;
+  box-shadow: none;
+}
+.panel-default {
+  border-color: transparent;
 }
 .products div:nth-child(4n + 4) {
   margin-left: 0px;
 }
-td.label {
-  font-size: 100%;
-  color: #333333;
-  margin: 0 0.5em 0 0;
-  padding: 0;
+.shop-products .row.products {
+  margin-bottom: 6em;
+}
+table p,
+table label {
+  margin: initial;
 }
 td.label label {
+  font-size: 16px;
+  color: #333333;
   font-weight: normal;
+  margin: 10px 10px 0 0;
+  padding: 0;
 }
 .styled-select {
   border: 1px solid #ccc;
@@ -122,7 +179,7 @@ td.label label {
   border-radius: 17px;
   overflow: hidden;
   position: relative;
-  width: 120px;
+  width: 170px;
 }
 .styled-select select {
   height: 34px;
@@ -131,18 +188,17 @@ td.label label {
   border: none;
   -webkit-appearance: none;
   cursor: pointer;
+  width: 200px;
 }
-.styled-select select:hover,
-.styled-select :hover {
+.styled-select :hover,
+.styled-select select:hover {
   background-color: #f1f1f1;
 }
 select:focus {
   outline: none;
 }
 @-moz-document url-prefix() {
-  .styled-select select {
-    width: 120%;
-  }
+  
 }
 .select-caret {
   position: absolute;
@@ -159,9 +215,6 @@ select::-ms-expand {
 _:-o-prefocus .styled-select,
 .selector .styled-select {
   background: none;
-}
-select#pa_length {
-  width: 140px;
 }
 :focus {
   outline: none;
@@ -183,7 +236,7 @@ select#pa_length {
   padding: 0;
   font-size: 12px;
   border-radius: 15px;
-  font-size: 18px;
+  font-size: 20px;
 }
 .quantity input.minus {
   margin-right: 0.5em;
@@ -194,7 +247,7 @@ select#pa_length {
 .quantity input#quantity {
   max-width: 100px;
   text-align: center;
-  font-size: 18px;
+  font-size: 20px;
   padding-left: 22px;
 }
 .product_meta {
@@ -242,7 +295,7 @@ td.product-quantity > div.quantity input.plus {
 #customer_details a.chosen-single,
 #customer_details .chosen-drop {
   width: 180px;
-  font-size: 14px;
+  font-size: 16px;
 }
 #customer_details a.chosen-single {
   background-image: none;
@@ -255,7 +308,7 @@ td.product-quantity > div.quantity input.plus {
   display: inline-block;
   padding: 6px 12px;
   margin: 0;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: normal;
   line-height: 1.42857143;
   text-align: center;
@@ -295,7 +348,7 @@ input#place_order {
   display: inline-block;
   padding: 6px 12px;
   margin: 0;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: normal;
   line-height: 1.42857143;
   text-align: center;
@@ -338,8 +391,8 @@ ul.woocommerce-error {
   border-color: #ebccd1;
 }
 ul.woocommerce-error {
-  padding: 22.4px 28px;
-  margin-top: 28px;
+  padding: 25.6px 32px;
+  margin-top: 32px;
   color: #c1272d;
   list-style-type: none;
   text-decoration: none;

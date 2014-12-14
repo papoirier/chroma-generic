@@ -1,4 +1,4 @@
-// COLORS ---------------------------------
+// COLORS // ---------------------------------
 @red: 				#C1272D;
 @green: 			#2F8A59;
 @blue: 				#00476B;
@@ -7,8 +7,10 @@
 @white: 			rgba(255, 255, 255, 0.7);
 @darkgray:			rgb(51, 51, 51);
 @midgray:			rgb(200,200,200);
+@link:				rgb(100,100,100);
+@link-hover:		rgb(130,130,130);
 
-// TYPOGRAPHY -----------------------------
+// TYPOGRAPHY // -----------------------------
 
 // eot
 @font-face {
@@ -49,14 +51,12 @@
 	src: url("../fonts/MarkScWeb-Bold.woff") format("woff");
 	font-weight: bold;
 }
-
 @font-family-sans-serif: "MarkWeb", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
-//@font-size-base: 18px;
-@font-size-base: 14px;
+@font-size-base: 16px;
 @font-size-h1: floor((@font-size-base * 2.6));
 @font-size-h2: floor((@font-size-base * 2.15)); 
-@font-size-h3: ceil((@font-size-base * 1.7)); 
+@font-size-h3: ceil((@font-size-base * 1.4)); 
 @font-size-h4: ceil((@font-size-base * 1.25)); 
 @font-size-h5: @font-size-base;
 @font-size-h6: ceil((@font-size-base * 0.85)); 
@@ -76,97 +76,161 @@ h2 {
 h3 {
 	font-size: @font-size-h3;
 	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1px;
 }
 h4 {
 	font-size: @font-size-h4;
+	line-height: @font-size-base*1.8;
 }
-h5, p span.sc, .sc, li.sc {
+h4 p {
+	margin-bottom: @font-size-base*0.9;
+}
+h5, 
+p span.sc, 
+.sc, 
+li.sc {
 	&:extend(.small-caps-th);
 	letter-spacing: 1px;
-	//color: @lightgray;
 }
 h6 {
 	font-size: @font-size-h6;
 }
-
 strong {
 	font-weight: bold;
 }
-
-.temp-text {
-	h3 {
-		margin-bottom: 1em;
-	}
+.temp-text h3 {
+	margin-bottom: 1em;
 }
-.language {
-	button a {
-		text-transform: lowercase;
-	}
+.language button a {
+	text-transform: lowercase;
 }
-
 .small-caps-th {
 	text-transform: lowercase;
 	font-family: 'MarkScWeb';
 	font-weight: normal;
 }
-
-// -------------------------------------
-
-
-#intro {
-	background-color: yellow;
-	background: url('../img/landing.png') no-repeat center center fixed;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
+a,
+a:link {
+	color: @link;
+	text-decoration: none;
 }
-	
+a:hover {
+	color: @link-hover;
+	text-decoration: none;
+}
+a:visited {
+	color: @link;
+	text-decoration: none;
+}
+a:active {
+    color: @link;
+    text-decoration: none;
+}
 
-
+// NAV  // ------------------------------
 nav.navbar {
 	background-color: @white;
 	border: none;
 	min-height: 40px;
 }
 
-
-// NAV  // ------------------------------
-
-
-//  BODY  // -----------------------------
-
+// GENERAL // ----------------------------
+body.home section {
+	min-height: 300px;
+	padding-top: 2em;
+	border-bottom: 3px solid #FAFAFA;
+}
 .top-pad {
 	margin-top: 5em;
 }
 
-// HOME // -------------------------------
-
-body.home section {
-	min-height: 300px;
-	padding-top: 2em;
+// INTRO // -------------------------------
+#intro {
+	background: url('../img/landing.png') no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+#intro img,
+#the-felt img,
+img {
+	max-width: 100%;
+}
+.intro-brand {
+	margin-top: 10%;
+	margin-bottom: 2em;
+}
+img.logo {
+}
+img.wiggle {
+	margin: 3.5em 0 1em 0;
+	clear: both;
 }
 
-// SHOP -------------------------------
+// THE FELT // ---------------------------
+
+#the-felt {
+	//background-color: aqua;
+}
+.panel,
+.panel-group,
+.panel-group .panel-default,
+.panel-group .panel-heading,
+.panel-group .panel-heading+.panel-collapse>.panel-body,
+.panel-group .panel-body,
+.panel-group ol {
+	padding: 0;
+	border: none;
+	background-color: transparent;
+	border-radius: 0;
+	box-shadow: none;
+}
+.panel-default {
+	border-color: transparent;
+}
+.panel-group {
+}
+.panel-default {
+}
+.panel-heading {
+}
+.panel-collapse {
+}
+.panel-body {
+}
+
+// SHOP // -------------------------------
 
 .products div:nth-child(4n + 4) {
   margin-left : 0px;
 }
+.shop-products a {
+	// text-transform: uppercase;
+	// letter-spacing: 1px;
+}
+.shop-products a:hover {
+}
+.shop-products .row.products {
+	margin-bottom: 6em;
+}
 
 // SINGLE PRODUCT -----------------------
-td.label {
-	font-size: 100%;
-	color: @darkgray;
-	margin: 0 0.5em 0 0;
-	padding: 0;
+table p, table label {
+	margin: initial;
 }
 td.label label {
+	font-size: @font-size-base;
+	color: @darkgray;
 	font-weight: normal;
+	margin: 10px 10px 0 0;
+	padding: 0;
 }
 
 // select button
 
-@select-btn-width: 120px;
+@select-btn-width: 170px;
 
 .styled-select {
   border: 1px solid #ccc;
@@ -175,24 +239,35 @@ td.label label {
   overflow: hidden;
   position: relative;
   width: @select-btn-width;
-  select {
-  	height: 34px;
+}
+.styled-select select {
+	height: 34px;
 	padding: 5px 0 5px 10px;
 	background-color: #FFF;
 	border: none;
 	-webkit-appearance: none; 
 	cursor: pointer;
-  }
-  select:hover, :hover {
-  	background-color: @lightgray;
-  }
+	width: @select-btn-width+30px;
+}
+.styled-select select#pa_color {
+	//width: @select-btn-width+30px;
+}
+.styled-select select#pa_length {
+	//width: 100px;
+}
+
+.styled-select :hover,
+.styled-select select:hover {
+	background-color: @lightgray;
 }
 select:focus { 
 	outline: none; 
 }
 
 @-moz-document url-prefix(){
-  .styled-select select { width: 120%; }
+  .styled-select select { 
+  	//width: 120%; 
+  }
 }
 
 .select-caret {
@@ -212,9 +287,6 @@ _:-o-prefocus, .selector {
   }
 }
 
-select#pa_length {
-	width: @select-btn-width+20%;
-}
 
 :focus {outline:none;}
 ::-moz-focus-inner {border:0;}

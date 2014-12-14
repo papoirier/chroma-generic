@@ -1,10 +1,4 @@
 <?php
-// File Security Check
-if ( ! empty( $_SERVER['SCRIPT_FILENAME'] ) && basename( __FILE__ ) == basename( $_SERVER['SCRIPT_FILENAME'] ) ) {
-    die ( 'You do not have sufficient permissions to access this page!' );
-}
-?>
-<?php
 
 /*-----------------------------------------------------------------------------------*/
 /* Start WooThemes Functions - Please refrain from editing this section */
@@ -25,19 +19,74 @@ $includes = array(
         'includes/theme-functions.php',     // Custom theme functions
         'includes/theme-actions.php',       // Theme actions & user defined hooks
         'includes/theme-comments.php',      // Custom comments/pingback loop
-        'includes/theme-js.php',        // Load JavaScript via wp_enqueue_script
-        'includes/sidebar-init.php',      // Initialize widgetized areas
-        'includes/theme-widgets.php',     // Theme widgets
-        'includes/theme-install.php',     // Theme installation
+        'includes/theme-js.php',            // Load JavaScript via wp_enqueue_script
+        'includes/sidebar-init.php',        // Initialize widgetized areas
+        'includes/theme-widgets.php',       // Theme widgets
+        'includes/theme-install.php',       // Theme installation
         'includes/theme-woocommerce.php',   // WooCommerce options
         'includes/theme-plugin-integrations.php'  // Plugin integrations
         );
 
-// Allow child themes/plugins to add widgets to be loaded.
+//Allow child themes/plugins to add widgets to be loaded.
 $includes = apply_filters( 'woo_includes', $includes );
 
 foreach ( $includes as $i ) {
   locate_template( $i, true );
+}
+
+// WOOCOMMERCE SETUP -------------------------------------
+
+add_action( 'after_setup_theme', 'woocommerce_support' );
+function woocommerce_support() {
+    add_theme_support( 'woocommerce' );
+}
+
+// telling woocommerce to use my hooks
+remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
+add_action('woocommerce_before_main_content', 'my_theme_wrapper_start', 10);
+remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
+add_action('woocommerce_after_main_content', 'my_theme_wrapper_end', 10);
+
+// tell woocommerce not to use its style sheets
+add_filter( 'woocommerce_enqueue_styles', '__return_false' );
+
+
+// PRODUCT PAGE ----------------------------------------
+
+// product image
+remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20);
+add_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20);
+
+// removing the 'reviews' tab
+add_filter( 'woocommerce_product_tabs', 'woo_remove_product_tabs', 98 );
+function woo_remove_product_tabs( $tabs ) {
+    unset( $tabs['reviews'] );
+    return $tabs;
+}
+
+// removing the breadcrumb trail
+remove_action( 'woocommerce_before_main_content','woocommerce_breadcrumb', 20, 0);
+
+
+// SHOP PAGE --------------------------------------------
+
+// removing the text enumerating how many items are in the shop
+remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20);
+
+function remove_loop_button(){
+  remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
+}
+add_action('init','remove_loop_button');
+
+
+// CART --------------------------------------------------
+
+// removing the price range
+add_filter('woocommerce_variable_price_html','custom_from',10);
+add_filter('woocommerce_grouped_price_html','custom_from',10);
+add_filter('woocommerce_variable_sale_price_html','custom_from',10);
+function custom_from($price){
+    return false;
 }
 
 // GLOBAL ------------------------------------------------------
@@ -134,61 +183,5 @@ function custom_script() {
 	);
 }
 
-// ======================================================= //
 
-
-// WOOCOMMERCE SETUP -------------------------------------
-
-add_action( 'after_setup_theme', 'woocommerce_support' );
-function woocommerce_support() {
-    add_theme_support( 'woocommerce' );
-}
-
-// telling woocommerce to use my hooks
-remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
-add_action('woocommerce_before_main_content', 'my_theme_wrapper_start', 10);
-remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
-add_action('woocommerce_after_main_content', 'my_theme_wrapper_end', 10);
-
-// tell woocommerce not to use its style sheets
-add_filter( 'woocommerce_enqueue_styles', '__return_false' );
-
-
-// PRODUCT PAGE ----------------------------------------
-
-// product image
-remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20);
-add_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20);
-
-// removing the 'reviews' tab
-add_filter( 'woocommerce_product_tabs', 'woo_remove_product_tabs', 98 );
-function woo_remove_product_tabs( $tabs ) {
-    unset( $tabs['reviews'] );
-    return $tabs;
-}
-
-// removing the breadcrumb trail
-remove_action( 'woocommerce_before_main_content','woocommerce_breadcrumb', 20, 0);
-
-
-// SHOP PAGE --------------------------------------------
-
-// removing the text enumerating how many items are in the shop
-remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20);
-
-function remove_loop_button(){
-  remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
-}
-add_action('init','remove_loop_button');
-
-
-// CART --------------------------------------------------
-
-// removing the price range
-add_filter('woocommerce_variable_price_html','custom_from',10);
-add_filter('woocommerce_grouped_price_html','custom_from',10);
-add_filter('woocommerce_variable_sale_price_html','custom_from',10);
-function custom_from($price){
-    return false;
-}
 

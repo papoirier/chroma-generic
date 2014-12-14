@@ -17,6 +17,7 @@
     <link href="<?php echo get_stylesheet_directory_uri() ?>/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="<?php echo get_stylesheet_directory_uri() ?>/css/styles.css" rel="stylesheet" media="screen">
     
+    <?php wp_enqueue_script('jquery'); ?>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -27,7 +28,7 @@
   </head>
   <body data-spy="scroll" data-target="#navbar" data-offset="10" <?php if(is_home()) {echo "class=\"home\"";} ?>>
   <!-- NAV - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default">
       <div id="navcolor" class="intro">
         <div class="container">
           <div class="navbar-header">
@@ -37,11 +38,7 @@
               <span class="icon-bar"></span>
             </button>
           </div>
-          <div class="navbar-collapse collapse">
-            <div class="row"><div class="col-md-12">
             <?php get_sidebar(); ?>
-          </div><!--/.nav-collapse -->
-          </div></div>
         </div>
       </div>
     </nav>

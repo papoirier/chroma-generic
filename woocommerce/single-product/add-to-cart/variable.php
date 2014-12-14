@@ -24,7 +24,7 @@ global $product, $post;
 						<td class="value">
 							<div class="styled-select">
 								<select id="<?php echo esc_attr( sanitize_title( $name ) ); ?>" name="attribute_<?php echo sanitize_title( $name ); ?>">
-									<!-- option value=""><?php //echo __( 'Choose an option', 'woocommerce' ) ?>&hellip;</option -->
+									<option value=""><?php echo __( 'Choose an option', 'woocommerce' ) ?>&hellip;</option>
 									<?php
 										if ( is_array( $options ) ) {
 
