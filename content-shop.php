@@ -1,11 +1,12 @@
 <?php
-/*
+/**
  * red:     en -> 125, fr -> 128
  * green:   en -> 126, fr -> 129
  * blue:    en -> 127, fr -> 130
- * 
- *
- *
+ * large:   en -> 151, fr -> 154
+ * medium:  en -> 161, fr -> 169
+ * small:   en -> 162, fr -> 170
+ * sample:  en -> 155, fr -> 158
  */
 ?>
 <div class="container shop-products">
@@ -13,7 +14,7 @@
     <!-- FELTS - - - - - - - - - - - - -->
     <div class="row title">
         <div class="col-md-12">
-            <h3 class="text-center"><?php _e('The felts','chroma'); ?></h3>
+            <h3 class="text-center skew skew-right"><?php _e('The felts','chroma'); ?></h3>
         </div>
     </div>
 	<div class="row products">
@@ -30,19 +31,7 @@
             );
         $loop = new WP_Query( $args_felt );
         while ( $loop->have_posts() ) : $loop->the_post(); global $product; ?>
-
-	        <li class="col-md-4">    
-	            <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-	            	<?php //$url = wp_get_attachment_url( get_post_thumbnail_id($page->ID, 'full') ); ?>
-	            	<?php $url = wp_get_attachment_url( get_post_thumbnail_id($loop->ID, 'large') ); ?>
-	                <?php if (has_post_thumbnail( $loop->post->ID )) { 
-	                	echo '<img src="' . $url . '" class="img-circle">';
-	                	} //else echo '<img src="'.woocommerce_placeholder_img_src().'" alt="Placeholder" width="65px" height="115px" />'; ?>
-	            </a>
-	            <p class="text-center"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></p>
-	            <?php //woocommerce_template_loop_add_to_cart( $loop->post, $product ); ?>
-	        </li>
-
+	        <?php include('loop-shop.php'); ?>
     	<?php endwhile; ?>
     	<?php wp_reset_query(); ?>
         </ul>
@@ -51,7 +40,7 @@
     <!-- BASKETS - - - - - - - - - - - - -->
     <div class="row title">
         <div class="col-md-12">
-            <h3 class="text-center"><?php _e('The baskets','chroma'); ?></h3>
+            <h3 class="text-center skew skew-left"><?php _e('The baskets','chroma'); ?></h3>
         </div>
     </div>
     <div class="row products">
@@ -68,15 +57,7 @@
             );
         $loop = new WP_Query( $args_baskets );
         while ( $loop->have_posts() ) : $loop->the_post(); global $product; ?>
-            <li class="col-md-4">    
-                <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-                    <?php $url = wp_get_attachment_url( get_post_thumbnail_id($loop->ID, 'large') ); ?>
-                    <?php if (has_post_thumbnail( $loop->post->ID )) { 
-                        echo '<img src="' . $url . '" class="img-circle">';
-                        } ?>
-                </a>
-                <p class="text-center"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></p>
-            </li>
+            <?php include('loop-shop.php'); ?>
         <?php endwhile; ?>
         <?php wp_reset_query(); ?>
         </ul>
@@ -85,7 +66,7 @@
     <!-- SAMPLE - - - - - - - - - - - - -->
     <div class="row title">
         <div class="col-md-12">
-            <h3 class="text-center"><?php _e('The sample','chroma'); ?></h3>
+            <h3 class="text-center skew skew-right"><?php _e('The sample','chroma'); ?></h3>
         </div>
     </div>
     <div class="row products">
@@ -102,17 +83,7 @@
             );
         $loop = new WP_Query( $args_sample );
         while ( $loop->have_posts() ) : $loop->the_post(); global $product; ?>
-
-            <li class="col-md-4 col-md-offset-4">    
-                <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-                    <?php $url = wp_get_attachment_url( get_post_thumbnail_id($loop->ID, 'large') ); ?>
-                    <?php if (has_post_thumbnail( $loop->post->ID )) { 
-                        echo '<img src="' . $url . '" class="img-circle">';
-                        } ?>
-                </a>
-                <p class="text-center"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></p>
-            </li>
-
+            <?php include('loop-shop.php'); ?>
         <?php endwhile; ?>
         <?php wp_reset_query(); ?>
         </ul>

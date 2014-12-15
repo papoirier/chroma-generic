@@ -7,8 +7,9 @@
 @white: 			rgba(255, 255, 255, 0.7);
 @darkgray:			rgb(51, 51, 51);
 @midgray:			rgb(200,200,200);
-@link:				rgb(100,100,100);
-@link-hover:		rgb(130,130,130);
+@link:				rgb(107,145,125);
+@link-hover:		rgb(157,193,163);
+@link-visited:		rgb(90,103,98);
 
 // TYPOGRAPHY // -----------------------------
 
@@ -56,10 +57,10 @@
 @font-size-base: 16px;
 @font-size-h1: floor((@font-size-base * 2.6));
 @font-size-h2: floor((@font-size-base * 2.15)); 
-@font-size-h3: ceil((@font-size-base * 1.4)); 
-@font-size-h4: ceil((@font-size-base * 1.25)); 
+@font-size-h3: ceil((@font-size-base * 1.6)); 
+@font-size-h4: ceil((@font-size-base * 1.2)); 
 @font-size-h5: @font-size-base;
-@font-size-h6: ceil((@font-size-base * 0.85)); 
+@font-size-h6: @font-size-base*0.8; 
 
 body {
 	font-family: @font-family-sans-serif;
@@ -82,19 +83,39 @@ h3 {
 h4 {
 	font-size: @font-size-h4;
 	line-height: @font-size-base*1.8;
+	font-weight: bold;
 }
 h4 p {
+	font-size: @font-size-h4;
+	line-height: @font-size-h4 * 1.5;
 	margin-bottom: @font-size-base*0.9;
 }
-h5, 
+h5 {
+	font-size: @font-size-h5;
+	line-height: @font-size-h5 * 1.5;
+	font-weight: bold;	
+}
+h6 {
+	font-size: @font-size-h6;
+	font-weight: bold;
+}
+p {
+	font-size: @font-size-base;
+	line-height: @font-size-base * 1.5;
+}
+
+
+h6, 
 p span.sc, 
 .sc, 
 li.sc {
 	&:extend(.small-caps-th);
 	letter-spacing: 1px;
 }
-h6 {
-	font-size: @font-size-h6;
+.small,
+p.small {
+	letter-spacing: 1px;
+	font-size: @font-size-base * 0.65;
 }
 strong {
 	font-weight: bold;
@@ -120,7 +141,7 @@ a:hover {
 	text-decoration: none;
 }
 a:visited {
-	color: @link;
+	//color: @link;
 	text-decoration: none;
 }
 a:active {
@@ -139,10 +160,14 @@ nav.navbar {
 body.home section {
 	min-height: 300px;
 	padding-top: 2em;
-	border-bottom: 3px solid #FAFAFA;
+	//border-bottom: 3px solid #FAFAFA;
 }
 .top-pad {
 	margin-top: 5em;
+}
+.more {
+	margin-top: 3em;
+	margin-bottom: 2em;
 }
 
 // INTRO // -------------------------------
@@ -159,21 +184,33 @@ img {
 	max-width: 100%;
 }
 .intro-brand {
-	margin-top: 10%;
+	margin-top: 5%;
 	margin-bottom: 2em;
 }
-img.logo {
+#intro img.logo {
+	max-width: 90%;
 }
 img.wiggle {
 	margin: 3.5em 0 1em 0;
 	clear: both;
 }
+.made-in-qc {
+	margin-top: @font-size-h4*2;
+}
+#intro h4 {
+	font-weight: normal;
+}
 
 // THE FELT // ---------------------------
-
 #the-felt {
-	//background-color: aqua;
+	margin-bottom: 2em;
 }
+.more p {
+	font-size: @font-size-base*0.8 !important;
+}
+
+
+/*
 .panel,
 .panel-group,
 .panel-group .panel-default,
@@ -200,23 +237,92 @@ img.wiggle {
 }
 .panel-body {
 }
+*/
 
 // SHOP // -------------------------------
 
-.products div:nth-child(4n + 4) {
-  margin-left : 0px;
-}
 .shop-products a {
-	// text-transform: uppercase;
-	// letter-spacing: 1px;
+	color: @darkgray;
 }
 .shop-products a:hover {
+	color: lighten(@darkgray, 30%);
 }
 .shop-products .row.products {
 	margin-bottom: 6em;
 }
+@blur: 7px;
+.products img:hover {
+    -webkit-filter: blur(@blur);
+    -moz-filter: blur(@blur);
+    -o-filter: blur(@blur);
+    -ms-filter: blur(@blur);
+	filter: blur(@blur);
+}
+.products h4 {
+	font-weight: bold;
+	margin-bottom: 0.2em;
+}
+.products h6 {
+	font-size: @font-size-h6 * 0.9;
+	margin-top: 0;
+}
+.skew {
+	background-repeat: no-repeat;
+	background-position: center;
+	padding-top: 1.2em;
+	padding-bottom: 1em;
+}
+.skew-right {
+	background-image: url('../img/wiggle-skew-right.png');
+}
+.skew-left {
+	background-image: url('../img/wiggle-skew-left.png');
+}
 
-// SINGLE PRODUCT -----------------------
+// FOOTER ---------------------------------
+
+@font-size-footer: 14px;
+footer {
+	background-image: url('../img/wiggle-single.png');
+	background-repeat: repeat-x;
+}
+footer .container {
+	margin: 2em auto 1em auto;
+	padding-top: 4em;
+}
+footer ul {
+	font-size: @font-size-footer;
+}
+footer li {
+	margin-bottom: @font-size-footer/4;
+}
+footer li a,
+footer li a:link {
+	color: @darkgray;
+}
+footer li a:visited {
+	color: @darkgray;
+}
+footer li a:hover {
+	color: @midgray;
+}
+footer li.subtitle {
+	font-size: @font-size-base*0.65;
+	letter-spacing: 1px;
+	font-weight: bold;
+	color: @midgray;
+	text-transform: uppercase;
+	margin-bottom: @font-size-footer;
+}
+.copyright {
+	margin-top: 3em;
+}
+.copyright p {
+	color: @midgray;
+}
+
+
+// SINGLE PRODUCT // -----------------------
 table p, table label {
 	margin: initial;
 }
@@ -277,17 +383,12 @@ select:focus {
   font-size: 24px;
   pointer-events: none;
 }
-
- select::-ms-expand { display: none; } /* hide default down arrow in IE10*/
-
-/* hack to fall back in opera */
+select::-ms-expand { display: none; } /* hide default down arrow in IE10*/
 _:-o-prefocus, .selector {
   .styled-select { 
   	background: none; 
   }
 }
-
-
 :focus {outline:none;}
 ::-moz-focus-inner {border:0;}
 
@@ -295,41 +396,36 @@ _:-o-prefocus, .selector {
 span.amount {
 	//font-size: @font-size-h3;
 }
-
 .quantity {
 	margin: 0 0 1em 0;
-	input {
-		display: inline-block;
-	}
-	
-	//min-width: 300px;
-	input.minus, input.plus {
-		//background-color: red;
-		width: 30px;
-		height: 30px;
-		text-align: center;
-		padding: 0;
-		font-size: 12px;
-		border-radius: 15px;
-		font-size: @font-size-h4;
-	}
-
-	input.minus {
-		margin-right: 0.5em;
-	}
-
-	input.plus {
-		margin-left: 0.5em;
-	}
-
-	input#quantity {
-		max-width: 100px;
-		text-align: center;
-		font-size: @font-size-h4;
-		padding-left: 22px;
-	}
+}
+.quantity input {
+	display: inline-block;
+}
+.quantity input.minus, input.plus {
+	//background-color: red;
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	padding: 0;
+	font-size: 12px;
+	border-radius: 15px;
+	font-size: @font-size-h4;
+}
+.quantity input.minus {
+	margin-right: 0.5em;
 }
 
+.quantity input.plus {
+	margin-left: 0.5em;
+}
+
+.quantity input#quantity {
+	max-width: 100px;
+	text-align: center;
+	font-size: @font-size-h4;
+	padding-left: 22px;
+}
 .product_meta {
 	margin: 1em 0 1em 0;
 }
@@ -546,24 +642,7 @@ ul.woocommerce-error {
 	}
 }
 
-// FOOTER ---------------------------------
-
-footer {
-	background-color: @midgray;
-	.container {
-		margin-top: 2em;
-		padding-top: 2em;
-		padding-bottom: 1.5em;
-	}
-	li.subtitle {
-		&:extend(.small-caps-th);
-		font-weight: bold;
-		letter-spacing: 1px;
-		color: @lightgray;
-	}
-}
-
-/* SCREEN SIZE SPECIFICS ------------------------------------- */ 
+// SCREEN SIZE SPECIFICS // ---------------------------------
 
 @media (min-width: 768px) {
 
