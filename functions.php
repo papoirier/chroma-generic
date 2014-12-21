@@ -42,10 +42,10 @@ function woocommerce_support() {
 }
 
 // telling woocommerce to use my hooks
-remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
-add_action('woocommerce_before_main_content', 'my_theme_wrapper_start', 10);
-remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
-add_action('woocommerce_after_main_content', 'my_theme_wrapper_end', 10);
+// remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
+// add_action('woocommerce_before_main_content', 'my_theme_wrapper_start', 10);
+// remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
+// add_action('woocommerce_after_main_content', 'my_theme_wrapper_end', 10);
 
 // tell woocommerce not to use its style sheets
 add_filter( 'woocommerce_enqueue_styles', '__return_false' );
@@ -64,14 +64,17 @@ function woo_remove_product_tabs( $tabs ) {
     return $tabs;
 }
 
-// removing the breadcrumb trail
 remove_action( 'woocommerce_before_main_content','woocommerce_breadcrumb', 20, 0);
+remove_action( 'woocommerce_after_single_product_summary','woocommerce_output_related_products', 20, 0);
+remove_action( 'woocommerce_after_single_product_summary','', 20, 0);
 
 
 // SHOP PAGE --------------------------------------------
 
-// removing the text enumerating how many items are in the shop
+// removing stuff
 remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20);
+remove_action( 'woocommerce_output_related_products', 20);
+
 
 function remove_loop_button(){
   remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );

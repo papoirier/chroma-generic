@@ -11,7 +11,10 @@
     <link href="<?php echo get_stylesheet_directory_uri() ?>/img/ico/favicon.png" rel="shortcut icon">
     <link rel="apple-touch-icon-precomposed" href="<?php echo get_stylesheet_directory_uri() ?>/img/apple-touch-icon-152x152-precomposed.png">
 
-    <title><?php bloginfo('name'); ?> &mdash; <?php is_home() ? bloginfo('description') : wp_title(''); ?></title>
+    <title><?php _e( 'Chroma felts', 'chroma' );  ?>
+      <?php if (!is_front_page()) {
+        echo ' > '; wp_title('');
+    } ?></title>
 
     <!-- CSS - - - - - - - - - - - - - - - -->
     <link href="<?php echo get_stylesheet_directory_uri() ?>/css/bootstrap.min.css" rel="stylesheet" media="screen">
@@ -31,14 +34,9 @@
     <nav class="navbar navbar-default">
       <div id="navcolor" class="intro">
         <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-          </div>
-            <?php //get_sidebar(); ?>
+            <?php if(!is_front_page()) { 
+              get_sidebar(); 
+            } ?>
         </div>
       </div>
     </nav>

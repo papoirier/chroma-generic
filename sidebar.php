@@ -1,9 +1,8 @@
-<div class="navbar-collapse collapse navbar-fixed-top">
+<div class="navbar-collapse collapse">
     <div class="row">
     	<div class="col-md-12">
 			<ul class="nav nav-justified">
-				<li><?php icl_post_languages();?></li>
-				<li><a href="<?php echo get_home_url(); ?>"><?php _e('Home','chroma'); ?></a></li>
+				<li><a href="<?php echo get_home_url(); ?>"><span class="sc">Chroma</span></a></li>
 			 <?php 
 			 //  $pages = get_pages(); 
 			 //  foreach ( $pages as $page ) {

@@ -96,8 +96,9 @@ h5 {
 	font-weight: bold;	
 }
 h6 {
-	font-size: @font-size-h6;
+	font-size: @font-size-base;
 	font-weight: bold;
+	line-height: @font-size-base * 1.5;
 }
 p {
 	font-size: @font-size-base;
@@ -105,7 +106,7 @@ p {
 }
 
 
-h6, 
+h5, 
 p span.sc, 
 .sc, 
 li.sc {
@@ -169,15 +170,25 @@ body.home section {
 	margin-top: 3em;
 	margin-bottom: 2em;
 }
+.container.generic-page {
+	min-height: 400px;
+	margin-bottom: 3em;
+}
+.container.generic-page h4 {
+	margin-bottom: 3em;
+}
+.faq p {
+	margin-bottom: 3em;
+}
 
 // INTRO // -------------------------------
-#intro {
-	background: url('../img/landing.png') no-repeat center center fixed;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-}
+// #intro {
+// 	background: url('../img/landing.png') no-repeat center center fixed;
+// 	-webkit-background-size: cover;
+// 	-moz-background-size: cover;
+// 	-o-background-size: cover;
+// 	background-size: cover;
+// }
 #intro img,
 #the-felt img,
 img {
@@ -279,7 +290,15 @@ img.wiggle {
 	background-image: url('../img/wiggle-skew-left.png');
 }
 
-// FOOTER ---------------------------------
+// THE STORY // ------------------------------
+.portrait {
+	margin: 0 auto 2em auto;
+}
+.portrait img {
+	width: 65%;
+}
+
+// FOOTER // ---------------------------------
 
 @font-size-footer: 14px;
 footer {
@@ -323,6 +342,18 @@ footer li.subtitle {
 
 
 // SINGLE PRODUCT // -----------------------
+.single-product-image img {
+	margin: 0 auto;
+}
+.description {
+	margin-top: 3em;
+	margin-bottom: 2em;
+}
+.bg-warning {
+	padding: 1em;
+	margin-top: 1em;
+	margin-bottom: 4em;
+}
 table p, table label {
 	margin: initial;
 }
@@ -404,27 +435,26 @@ span.amount {
 }
 .quantity input.minus, input.plus {
 	//background-color: red;
-	width: 30px;
-	height: 30px;
+	width: 32px;
+	height: 32px;
 	text-align: center;
 	padding: 0;
 	font-size: 12px;
-	border-radius: 15px;
+	border-radius: 50%;
 	font-size: @font-size-h4;
 }
 .quantity input.minus {
 	margin-right: 0.5em;
 }
-
 .quantity input.plus {
 	margin-left: 0.5em;
 }
-
-.quantity input#quantity {
+.quantity input.qty {
 	max-width: 100px;
 	text-align: center;
 	font-size: @font-size-h4;
-	padding-left: 22px;
+	padding: 0;
+	height: 32px;
 }
 .product_meta {
 	margin: 1em 0 1em 0;
@@ -645,7 +675,13 @@ ul.woocommerce-error {
 // SCREEN SIZE SPECIFICS // ---------------------------------
 
 @media (min-width: 768px) {
-
+	#intro {
+		background: url('../img/landing.png') no-repeat center center fixed;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+	}
 }
 
 @media (max-width: 991px) {

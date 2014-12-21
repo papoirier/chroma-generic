@@ -5,21 +5,21 @@
 
 <?php
 /**
- * Intro 	-> 61
- * The felt -> 68
+ * Intro 	en ->  61, fr -> 530
+ * The felt en ->  68, fr -> 541
+ * Shop 	en -> 426, fr -> 527
  */
 ?>   
 
 <!-- INTRO - - - - - - - - - - - - - - -  -->
 <section id="intro" class="full">
 
-    <?php $my_query = new WP_Query( 'page_id=61' ); ?>
+    <?php $my_query = new WP_Query( 'page_id=530' ); ?>
    	<?php while ($my_query->have_posts()) : $my_query->the_post(); ?>
 	<div class="container">
 		<div class="row customer">
 			<div class="col-md-4 main-description">
 				<div class="intro-brand">
-					<?php //echo get_stylesheet_directory_uri(); _e( '/img/logo-en.png', 'chroma'); ?>
 					<?php $url = wp_get_attachment_url( get_post_thumbnail_id($page->ID, 'full') ); ?>
 					<img src="<?php echo $url; ?>" class="logo">
 					<img src="<?php echo get_stylesheet_directory_uri(); ?>/img/wiggle-separator.png" class="wiggle">
@@ -39,7 +39,7 @@
 
 <!-- THE FELT - - - - - - - - - - - - - - -  -->
 <section id="the-felt" class="full">
-<?php $my_query = new WP_Query( 'page_id=68' ); ?>
+<?php $my_query = new WP_Query( 'page_id=541' ); ?>
 <?php if ( $my_query->have_posts() ) : ?>
 	<div>
 	    <?php
@@ -57,7 +57,7 @@
 
 	<?php //echo spit_the_cat('felt'); ?>
 
-		<?php $my_query = new WP_Query( 'page_id=4' ); ?>
+		<?php $my_query = new WP_Query( 'page_id=527' ); ?>
 		<?php if ( $my_query->have_posts() ) : ?>
 			<div>
 			    <?php

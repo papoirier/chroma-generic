@@ -15,17 +15,15 @@
       continue;
       $content = apply_filters( 'the_content', $content ); ?>
       <div class="col-md-4">
-        <h5><?php echo $thepage->post_title; ?></h5>        
+        <h6><?php echo $thepage->post_title; ?></h6>        
         <?php echo $content; ?>
       </div>
       <?php } ?>
       <?php wp_reset_query(); ?>
   </div> <!-- /.row -->
 
-  <div class="row top-pad">
-    <div class="col-md-6">
-      <?php the_content(); ?>
-    </div>
-  </div>
+  <!-- div class="row top-pad" -->
+    <!-- div class="col-md-6" -->
+      <?php //the_content(); ?>
 
 </div> <!-- /.container -->

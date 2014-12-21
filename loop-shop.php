@@ -1,4 +1,11 @@
-<?php if ($post->ID == 155 || $post->ID == 158) { ?>
+<?php 
+/**
+ * Sample
+ * en -> 556
+ * fr -> 555
+ */
+?>
+<?php if ($post->ID == 555 || $post->ID == 556) { ?>
     <li class="col-md-4 col-md-offset-4">    
         <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
             <?php $url = wp_get_attachment_url( get_post_thumbnail_id($loop->ID, 'large') ); ?>

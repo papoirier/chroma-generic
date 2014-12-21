@@ -68,14 +68,15 @@ h5 {
   font-weight: bold;
 }
 h6 {
-  font-size: 12.8px;
+  font-size: 16px;
   font-weight: bold;
+  line-height: 24px;
 }
 p {
   font-size: 16px;
   line-height: 24px;
 }
-h6,
+h5,
 p span.sc,
 .sc,
 li.sc {
@@ -96,7 +97,7 @@ strong {
   text-transform: lowercase;
 }
 .small-caps-th,
-h6,
+h5,
 p span.sc,
 .sc,
 li.sc,
@@ -139,12 +140,15 @@ body.home section {
   margin-top: 3em;
   margin-bottom: 2em;
 }
-#intro {
-  background: url('../img/landing.png') no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+.container.generic-page {
+  min-height: 400px;
+  margin-bottom: 3em;
+}
+.container.generic-page h4 {
+  margin-bottom: 3em;
+}
+.faq p {
+  margin-bottom: 3em;
 }
 #intro img,
 #the-felt img,
@@ -238,6 +242,12 @@ img.wiggle {
 .skew-left {
   background-image: url('../img/wiggle-skew-left.png');
 }
+.portrait {
+  margin: 0 auto 2em auto;
+}
+.portrait img {
+  width: 65%;
+}
 footer {
   background-image: url('../img/wiggle-single.png');
   background-repeat: repeat-x;
@@ -275,6 +285,18 @@ footer li.subtitle {
 }
 .copyright p {
   color: #c8c8c8;
+}
+.single-product-image img {
+  margin: 0 auto;
+}
+.description {
+  margin-top: 3em;
+  margin-bottom: 2em;
+}
+.bg-warning {
+  padding: 1em;
+  margin-top: 1em;
+  margin-bottom: 4em;
 }
 table p,
 table label {
@@ -343,12 +365,12 @@ _:-o-prefocus .styled-select,
 }
 .quantity input.minus,
 input.plus {
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   text-align: center;
   padding: 0;
   font-size: 12px;
-  border-radius: 15px;
+  border-radius: 50%;
   font-size: 20px;
 }
 .quantity input.minus {
@@ -357,11 +379,12 @@ input.plus {
 .quantity input.plus {
   margin-left: 0.5em;
 }
-.quantity input#quantity {
+.quantity input.qty {
   max-width: 100px;
   text-align: center;
   font-size: 20px;
-  padding-left: 22px;
+  padding: 0;
+  height: 32px;
 }
 .product_meta {
   margin: 1em 0 1em 0;
@@ -519,4 +542,13 @@ ul.woocommerce-error {
 }
 .btn-edit-page a :hover {
   text-decoration: none;
+}
+@media (min-width: 768px) {
+  #intro {
+    background: url('../img/landing.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
 }

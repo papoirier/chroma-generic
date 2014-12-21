@@ -1,15 +1,6 @@
-<?php if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
-?>
+<?php do_action( 'woocommerce_before_single_product' ); ?>
 
-<?php
-	 do_action( 'woocommerce_before_single_product' );
-
-	 if ( post_password_required() ) {
-	 	echo get_the_password_form();
-	 	return;
-	 }
-?>
-<div class="container top-pad">
+<div class="container">
 	<div class="row">
 		<div class="col-md-12">
 
@@ -41,8 +32,6 @@
 						 */
 						
 						do_action( 'woocommerce_single_product_summary' );
-
-						
 
 					?>
 

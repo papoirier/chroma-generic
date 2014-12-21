@@ -1,17 +1,7 @@
 <?php
-/**
- * Cart Page
- *
- * @author 		WooThemes
- * @package 	WooCommerce/Templates
- * @version     2.1.0
- */
-
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
-
 wc_print_notices();
-
-do_action( 'woocommerce_before_cart' ); ?>
+do_action( 'woocommerce_before_cart' ); 
+?>
 
 <form action="<?php echo esc_url( WC()->cart->get_cart_url() ); ?>" method="post">
 
@@ -119,7 +109,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 <div class="actions">
 	<?php if ( WC()->cart->coupons_enabled() ) { ?>
 		<div class="coupon">
-			<label for="coupon_code"><?php _e( 'Coupon', 'woocommerce' ); ?>:</label> <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php _e( 'Coupon code', 'woocommerce' ); ?>" /> <input type="submit" class="button" name="apply_coupon" value="<?php _e( 'Apply Coupon', 'woocommerce' ); ?>" />
+			<label for="coupon_code"><?php _e( 'Coupon', 'woocommerce' ); ?>:</label> <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php _e( 'Coupon code', 'woocommerce' ); ?>" /> <input type="submit" class="btn btn-default" name="apply_coupon" value="<?php _e( 'Apply Coupon', 'woocommerce' ); ?>" />
 			<?php do_action('woocommerce_cart_coupon'); ?>
 		</div>
 	<?php } ?>
