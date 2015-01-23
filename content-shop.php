@@ -40,7 +40,7 @@
     <!-- BASKETS - - - - - - - - - - - - -->
     <div class="row title">
         <div class="col-md-12">
-            <h3 class="text-center skew skew-left"><?php _e('The baskets','chroma'); ?></h3>
+            <h3 class="text-center skew skew-left"><?php _e('CO&SO baskets','chroma'); ?></h3>
         </div>
     </div>
     <div class="row products">

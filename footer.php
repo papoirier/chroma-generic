@@ -16,14 +16,8 @@
 				</div>
 				
 				<div class="col-md-3 col-xs-6">
-					<?php 
-					/*
-					 * About 		-> 228, 502
-					 * The founder 	-> 219, 221
-					 *
-					 */ ?>
-					<?php
-					$children = wp_list_pages('title_li=&child_of=502&echo=0');
+					<?php // ABOUT // live -> 502 // local -> 228 ?>
+					<?php $children = wp_list_pages('title_li=&child_of=502,228&echo=0');
 					if ($children) { ?>
 						<ul>
 							<li class="subtitle"><?php _e( 'About', 'chroma'); ?></li>
@@ -36,15 +30,19 @@
 						<li class="subtitle"><?php _e( 'Discover', 'chroma'); ?></li>
 						<li><a href="http://tangiblemtl.ca" title="Tangible Studio" target="_blank">Tangible Studio</a></li>
 						<li><a href="http://co-so.co" title="CO&amp;SO" target="_blank"><?php _e( '<span class="sc">CO&amp;SO</span> products', 'chroma' ); ?></a></li>
-						<li><a class="newsletter" href="http://eepurl.com/Ai7bv" target="_blank"><?php _e( 'Newsletter', 'chroma' ); ?></a></li>
+						<?php // PRESS // live -> 629 // local -> 297 ?>
+						<li><a href="<?php echo get_the_permalink('629'); ?>" title="<?php echo get_the_title('629'); ?>"><?php echo get_the_title('629');?></li>
 					</ul>
 				</div>
 				<div class="col-md-3 col-xs-6">
 					<ul>
 						<li class="subtitle"><?php _e( 'Connect', 'chroma' ); ?></li>
-						<li><a href="<?php echo get_the_permalink('511'); ?>" title="<?php echo get_the_title('511'); ?>"><?php echo get_the_title('511'); ?></li>
+						<?php // CONTACT // live -> 511 // local -> 275 ?>
+						<li><a href="<?php echo get_the_permalink('511'); ?>" title="<?php echo get_the_title('511'); ?>"><?php echo get_the_title('511');?></li>
 						<li><a href="https://www.facebook.com/TangibleStudioInc" title="Facebook" target="_blank">Facebook</a></li>
 						<li><a href="https://www.pinterest.com/mariannecm/felt-inspirations/" title="Pinterest" target="_blank">Pinterest</a></li>
+						<?php // NEWSLETTER // live -> 617 // local -> 302 ?>
+						<li><a href="<?php echo get_the_permalink('617'); ?>" title="<?php echo get_the_title('617'); ?>"><?php echo get_the_title('617');?></li>
 					</ul>
 				</div>
 			</div>

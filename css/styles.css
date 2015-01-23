@@ -150,24 +150,77 @@ body.home section {
 .faq p {
   margin-bottom: 3em;
 }
-#intro img,
-#the-felt img,
-img {
-  max-width: 100%;
+#intro {
+  position: relative;
+  padding-top: 0px;
 }
-.intro-brand {
-  margin-top: 5%;
-  margin-bottom: 2em;
-}
-#intro img.logo {
-  max-width: 90%;
-}
-img.wiggle {
+.wiggle {
   margin: 3.5em 0 1em 0;
   clear: both;
+  background-repeat: no-repeat;
+  background-position: left;
+  height: 15px;
+  visibility: visible;
 }
-.made-in-qc {
-  margin-top: 40px;
+@media (max-width: 767px) {
+  .intro-mobile-img {
+    visibility: visible;
+    margin-bottom: 2em;
+    width: 100%;
+  }
+  .intro-logo {
+    background-color: transparent;
+  }
+  .wiggle {
+    display: none;
+    visibility: hidden;
+  }
+}
+@media (min-width: 768px) {
+  #intro img.logo {
+    max-width: 90%;
+  }
+  .intro-mobile-img {
+    visibility: hidden;
+    display: none;
+  }
+  .intro-brand {
+    position: absolute;
+    top: 45%;
+    height: 500px;
+    margin-top: -250px;
+  }
+  .wiggle {
+    width: 750px;
+    background-image: url('../img/wiggle-750.png');
+  }
+}
+@media (max-width: 991px) {
+  .wiggle {
+    max-width: 100%;
+    background-image: url('../img/wiggle-390.png');
+  }
+}
+@media (min-width: 992px) {
+  .wiggle {
+    width: 323px;
+    background-image: url('../img/wiggle-323.png');
+  }
+}
+@media (min-width: 1200px) {
+  .wiggle {
+    width: 390px;
+    background-image: url('../img/wiggle-390.png');
+  }
+}
+img,
+#intro img,
+#the-felt img {
+  max-width: 100%;
+}
+.intro-logo {
+  margin-top: 5%;
+  margin-bottom: 2em;
 }
 #intro h4 {
   font-weight: normal;
@@ -214,6 +267,12 @@ img.wiggle {
 }
 .shop-products .row.products {
   margin-bottom: 6em;
+}
+.shop-products img {
+  border-radius: 50%;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
 }
 .products img:hover {
   -webkit-filter: blur(7px);
@@ -429,7 +488,7 @@ td.product-quantity > div.quantity input.plus {
   text-align: left !important;
 }
 #customer_details a.chosen-single,
-#customer_details .chosen-drop {
+.chosen-drop {
   width: 180px;
   font-size: 16px;
 }
@@ -502,15 +561,6 @@ li {
 #payment ul.payment_methods li label {
   font-weight: normal;
 }
-.payment_method_paypal a.about_paypal {
-  font-size: 80%;
-  letter-spacing: 0.5px;
-  margin-left: 1em;
-}
-.payment_method_paypal .payment_box {
-  font-size: 80%;
-  letter-spacing: 0.5px;
-}
 .woocommerce-invalid,
 .woocommerce-invalid-required-field {
   color: #a94442;
@@ -540,15 +590,54 @@ ul.woocommerce-error {
 .btn-edit-page a {
   color: #FFF;
 }
-.btn-edit-page a :hover {
+.btn-edit-page a:hover {
   text-decoration: none;
 }
+#mc_embed_signup {
+  margin-top: 2em;
+}
+#mc_embed_signup label {
+  font-weight: normal;
+}
+#mc_embed_signup .form-group {
+  display: block;
+}
+#mc_embed_signup div.mce_inline_error {
+  font-weight: normal !important;
+  background-color: transparent !important;
+  color: #a94442 !important;
+  border-color: #a94442 !important;
+}
+#mc-embedded-subscribe {
+  font-size: 16px;
+  background-color: #6b917d;
+  border: none;
+  color: #FFF;
+  margin-top: 1em;
+}
 @media (min-width: 768px) {
+  #intro {
+    background: url('../img/landing-992.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+}
+@media (min-width: 992px) {
   #intro {
     background: url('../img/landing.png') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+  }
+}
+@media (max-width: 767px) {
+  .intro-logo {
+    margin-bottom: 3em;
+  }
+  .wiggle {
+    margin: 0;
   }
 }

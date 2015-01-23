@@ -8,14 +8,12 @@
     <meta name="author" content="Marianne Coquelicot Mercier">
     <meta name="keywords" content="feutre, felt, textile, non woven, tangible studio, design d'interieur, architecture d'interieur, design textile, architecture, decoration, durable, eco-design, post-consommation, matériau, rénovation, montréal, québec, canada, felt, interior design, interior architecture, material, home improvement, sustainable, post-consumption">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="<?php echo get_stylesheet_directory_uri() ?>/img/ico/favicon.png" rel="shortcut icon">
-    <link rel="apple-touch-icon-precomposed" href="<?php echo get_stylesheet_directory_uri() ?>/img/apple-touch-icon-152x152-precomposed.png">
-
+    <link href="<?php echo get_stylesheet_directory_uri() ?>/favicon.ico" rel="shortcut icon">
+    <link rel="apple-touch-icon-precomposed" href="<?php echo get_stylesheet_directory_uri() ?>/apple-touch-icon-152x152-precomposed.png">
     <title><?php _e( 'Chroma felts', 'chroma' );  ?>
       <?php if (!is_front_page()) {
         echo ' > '; wp_title('');
     } ?></title>
-
     <!-- CSS - - - - - - - - - - - - - - - -->
     <link href="<?php echo get_stylesheet_directory_uri() ?>/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="<?php echo get_stylesheet_directory_uri() ?>/css/styles.css" rel="stylesheet" media="screen">
