@@ -147,6 +147,9 @@ body.home section {
 .container.generic-page h4 {
   margin-bottom: 3em;
 }
+.faq h6 {
+  margin-bottom: 0px;
+}
 .faq p {
   margin-bottom: 3em;
 }
@@ -342,7 +345,9 @@ footer li.subtitle {
 .copyright {
   margin-top: 3em;
 }
-.copyright p {
+.copyright p,
+.copyright a,
+.copyright p a {
   color: #c8c8c8;
 }
 .single-product-image img {

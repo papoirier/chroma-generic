@@ -7,6 +7,7 @@ woo_main_before();
 if ( have_posts() ) :
 while ( have_posts() ) : the_post();
 ?>   
+    <?php // FAQ // 518, 439 // CREDITS // 645, 652 ?>
     <div class="container generic-page top-pad <?php if (is_page('518') || is_page('439') || is_page('645') || is_page('652') ) { echo 'faq'; } ?>"> 
         <div class="row">
     		<div class="col-md-6 col-md-offset-3">

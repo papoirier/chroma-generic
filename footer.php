@@ -42,14 +42,15 @@
 						<li><a href="https://www.facebook.com/TangibleStudioInc" title="Facebook" target="_blank">Facebook</a></li>
 						<li><a href="https://www.pinterest.com/mariannecm/felt-inspirations/" title="Pinterest" target="_blank">Pinterest</a></li>
 						<?php // NEWSLETTER // live -> 617 // local -> 302 ?>
-						<li><a href="<?php echo get_the_permalink('617'); ?>" title="<?php echo get_the_title('617'); ?>"><?php echo get_the_title('617');?></li>
+						<li><a href="<?php echo get_the_permalink('617'); ?>" title="<?php echo get_the_title('617'); ?>"><?php echo get_the_title('617');?></a></li>
 					</ul>
 				</div>
 			</div>
 			
+			<?php // CREDITS // 645, 652 ?>
 			<div class="row copyright">
 		    	<div class="col-md-12">
-		    		<p class="text-center small">&copy; <?php echo date("Y"); ?>, Tangible Studio, Inc.</p>
+		    		<p class="text-center small">&copy; <?php echo date("Y"); ?>, Tangible Studio, Inc. &bull; <a href="<?php echo get_the_permalink('645'); ?>" title="<?php echo get_the_title('645'); ?>"><?php echo get_the_title('645');?></a></p>
 		        </div>
 		    </div>
 			
