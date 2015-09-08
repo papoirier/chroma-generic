@@ -9,7 +9,9 @@
  * @version     2.0.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 get_header( 'shop' ); ?>
 
@@ -23,19 +25,11 @@ get_header( 'shop' ); ?>
 		do_action( 'woocommerce_before_main_content' );
 	?>
 
-
-	<div class="container top-pad">
-		
 		<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-	
-			<div class="row">
-				<div class="col-md-12">
-					<h1 class="page-title"><?php woocommerce_page_title(); ?></h1>
-				</div>
-			</div>
+
+			<h1 class="page-title"><?php woocommerce_page_title(); ?></h1>
 
 		<?php endif; ?>
-
 
 		<?php do_action( 'woocommerce_archive_description' ); ?>
 
@@ -57,7 +51,7 @@ get_header( 'shop' ); ?>
 
 				<?php while ( have_posts() ) : the_post(); ?>
 
-				<?php wc_get_template_part( 'content', 'product' ); ?>
+					<?php wc_get_template_part( 'content', 'product' ); ?>
 
 				<?php endwhile; // end of the loop. ?>
 

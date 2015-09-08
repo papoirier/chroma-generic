@@ -55,8 +55,8 @@
 
 <!-- SHOP - - - - - - - - - - - - - - - - - - - -->
 <section id="shop" class="">
-	<?php // INTRO // live -> 527 // local -> 4 ?>
-	<?php $my_query = new WP_Query( 'page_id=527' );?>
+	<?php // SHOP // live -> 678 // local -> 4 ?>
+	<?php $my_query = new WP_Query( 'page_id=678' );?>
 	<?php if ( $my_query->have_posts() ) : ?>
 		<div>
 		    <?php

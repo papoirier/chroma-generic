@@ -50,7 +50,7 @@
 			<?php // CREDITS // 645, 652 ?>
 			<div class="row copyright">
 		    	<div class="col-md-12">
-		    		<p class="text-center small">&copy; <?php echo date("Y"); ?>, Tangible Studio, Inc. &bull; <a href="<?php echo get_the_permalink('645'); ?>" title="<?php echo get_the_title('645'); ?>"><?php echo get_the_title('645');?></a></p>
+		    		<p class="text-center small">&copy; <?php echo date("Y"); ?>, Tangible Studio, Inc. &bull; <a href="<?php echo get_the_permalink('645'); ?>" title="<?php echo get_the_title('645'); ?>"><?php echo get_the_title('645');?></a> &bull; <a href="mailto:&#105;&#110;&#102;&#111;&#064;&#099;&#104;&#114;&#114;&#114;&#111;&#109;&#097;&#046;&#099;&#097;">&#105;&#110;&#102;&#111;&#064;&#099;&#104;&#114;&#114;&#114;&#111;&#109;&#097;&#046;&#099;&#097;</a></p>
 		        </div>
 		    </div>
 			
