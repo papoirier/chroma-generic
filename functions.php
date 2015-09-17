@@ -57,10 +57,12 @@ add_filter( 'woocommerce_enqueue_styles', '__return_false' );
 remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20);
 add_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20);
 
-// removing the 'reviews' tab
+// removing the tabs
 add_filter( 'woocommerce_product_tabs', 'woo_remove_product_tabs', 98 );
 function woo_remove_product_tabs( $tabs ) {
+    //unset( $tabs['description'] );
     unset( $tabs['reviews'] );
+    //unset( $tabs['additional_information'] );
     return $tabs;
 }
 
@@ -68,6 +70,29 @@ remove_action( 'woocommerce_before_main_content','woocommerce_breadcrumb', 20, 0
 remove_action( 'woocommerce_after_single_product_summary','woocommerce_output_related_products', 20, 0);
 remove_action( 'woocommerce_after_single_product_summary','', 20, 0);
 
+// customizing the product page
+//remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 5 );
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10 );
+//remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
+//remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
+//remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 50 );
+
+remove_action( 'woocommerce_single_product_summary', 'woocommerce_output_product_data_tabs', 10 );
+//remove_action( 'woocommerce_single_product_summary', 'woocommerce_upsell_display', 15 );
+//remove_action( 'woocommerce_single_product_summary', 'woocommerce_output_related_products', 20 );
+
+// remove 'additional information' heading
+//add_filter('woocommerce_product_additional_information_heading','__return_null');
+
+add_filter('woocommerce_product_additional_information_heading','isa_product_additional_information_heading');
+function isa_product_additional_information_heading() {
+  echo "<h5>";
+  _e("Specifications","chroma");
+  echo "</h5>";
+
+}
 
 // SHOP PAGE --------------------------------------------
 
@@ -179,7 +204,26 @@ function icl_post_languages(){
   }
 }
 
+define('ICL_DONT_LOAD_LANGUAGE_SELECTOR_CSS', true);
 
+// custom language selector
+// to use call custom_language_selector(); in a template
+function custom_language_selector(){
+    if (function_exists('icl_get_languages')) {
+        $languages = icl_get_languages('skip_missing=0&orderby=code&order=desc');           
+        if(!empty($languages)){
+            echo '<ul>';
+                foreach($languages as $l){
+                    if(!$l['active']){
+                    echo '<li class="sc">
+                        <a href="' . $l['url'] . '">' . strtoupper ($l['language_code']). '</a>
+                    </li>';
+                    }
+                }
+            echo '</ul>';
+        }
+    }
+}
 
 // SCRIPTS ------------------------------------------------------
 

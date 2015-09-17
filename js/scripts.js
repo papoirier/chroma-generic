@@ -10,6 +10,10 @@ jQuery(document).ready(function($) {
     fullIntro();
   };
 
+  // style dropdowns
+  //$('#s2id_billing_state').addClass('dropdown');
+  //$('#s2id_billing_state > a').addClass('btn btn-default');
+
   // tooltips
   $('[data-toggle="tooltip"]').tooltip();
 
@@ -27,9 +31,12 @@ jQuery(document).ready(function($) {
   $("input.input-text").addClass( "form-control" );
   $("input.input-text").attr( "id", "quantity" );
   $("input.plus").addClass( "btn btn-default" );
-  $("button.single_add_to_cart_button").addClass("btn btn-default");
+  $("button.single_add_to_cart_button").addClass("btn btn-default btn-lg green");
   $("form.variations_form").addClass( "form-inline" );
   $("#billing_country_chosen").removeAttr("style");
+
+  // variable product
+  $("#pa_color").after('<span class="caret">');
 
   // $(window).resize(function(){
   //   if ($(window).width() > 767) {

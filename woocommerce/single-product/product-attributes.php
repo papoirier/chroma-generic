@@ -7,6 +7,9 @@
  * @author 		WooThemes
  * @package 	WooCommerce/Templates
  * @version     2.1.3
+ *
+ * --- MOD ---
+ *
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -20,7 +23,7 @@ $attributes = $product->get_attributes();
 ob_start();
 
 ?>
-<table class="shop_attributes">
+<table class="shop_attributes table">
 
 	<?php if ( $product->enable_dimensions_display() ) : ?>
 

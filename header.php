@@ -32,9 +32,9 @@
     <nav class="navbar navbar-default">
       <div id="navcolor" class="intro">
         <div class="container">
-            <?php if(!is_front_page()) { 
+            <?php //if(!is_front_page()) { 
               get_sidebar(); 
-            } ?>
+            //} ?>
         </div>
       </div>
     </nav>

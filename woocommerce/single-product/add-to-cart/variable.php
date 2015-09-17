@@ -5,6 +5,9 @@
  * @author  WooThemes
  * @package WooCommerce/Templates
  * @version 2.4.0
+ *
+ * --- MOD ---
+ *
  */
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -22,7 +25,7 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 	<?php if ( empty( $available_variations ) && false !== $available_variations ) : ?>
 		<p class="stock out-of-stock"><?php _e( 'This product is currently out of stock and unavailable.', 'woocommerce' ); ?></p>
 	<?php else : ?>
-		<table class="variations" cellspacing="0">
+		<table class="variations center" cellspacing="0">
 			<tbody>
 				<?php foreach ( $attributes as $attribute_name => $options ) : ?>
 					<tr>
@@ -31,7 +34,7 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 							<?php
 								$selected = isset( $_REQUEST[ 'attribute_' . sanitize_title( $attribute_name ) ] ) ? wc_clean( $_REQUEST[ 'attribute_' . sanitize_title( $attribute_name ) ] ) : $product->get_variation_default_attribute( $attribute_name );
 								wc_dropdown_variation_attribute_options( array( 'options' => $options, 'attribute' => $attribute_name, 'product' => $product, 'selected' => $selected ) );
-								echo end( $attribute_keys ) === $attribute_name ? '<a class="reset_variations" href="#">' . __( 'Clear selection', 'woocommerce' ) . '</a>' : '';
+								//echo end( $attribute_keys ) === $attribute_name ? '<div class="clear"></div><a class="reset_variations" href="#">' . __( 'Clear selection', 'woocommerce' ) . '</a>' : '';
 							?>
 						</td>
 					</tr>

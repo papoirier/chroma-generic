@@ -13,11 +13,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 global $post;
 
-// if ( ! $post->post_excerpt ) {
-// 	return;
-// }
+if ( ! $post->post_excerpt ) {
+	return;
+}
 
 ?>
 <div itemprop="description">
-	<?php // echo apply_filters( 'woocommerce_short_description', $post->post_excerpt ) ?>
+	<?php echo apply_filters( 'woocommerce_short_description', $post->post_excerpt ) ?>
 </div>

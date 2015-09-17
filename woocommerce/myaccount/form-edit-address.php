@@ -5,6 +5,9 @@
  * @author      WooThemes
  * @package     WooCommerce/Templates
  * @version     2.1.0
+ *
+ * --- MOD ---
+ *
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -29,7 +32,7 @@ get_currentuserinfo();
 
 	<form method="post">
 
-		<h3><?php echo apply_filters( 'woocommerce_my_account_edit_address_title', $page_title ); ?></h3>
+		<h4 class="text-center"><?php echo apply_filters( 'woocommerce_my_account_edit_address_title', $page_title ); ?></h4>
 
 		<?php do_action( "woocommerce_before_edit_address_form_{$load_address}" ); ?>
 
@@ -42,7 +45,7 @@ get_currentuserinfo();
 		<?php do_action( "woocommerce_after_edit_address_form_{$load_address}" ); ?>
 
 		<p>
-			<input type="submit" class="button" name="save_address" value="<?php _e( 'Save Address', 'woocommerce' ); ?>" />
+			<input type="submit" class="button btn btn-default btn-lg" name="save_address" value="<?php esc_attr_e( 'Save Address', 'woocommerce' ); ?>" />
 			<?php wp_nonce_field( 'woocommerce-edit_address' ); ?>
 			<input type="hidden" name="action" value="edit_address" />
 		</p>

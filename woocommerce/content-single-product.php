@@ -7,19 +7,33 @@
  * @author 		WooThemes
  * @package 	WooCommerce/Templates
  * @version     1.6.4
+ *
+ * --- MOD ---
+ *
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
-
 ?>
 
-<?php do_action( 'woocommerce_before_single_product' ); ?>
-
-<div class="container">
+<div class="container generic-page">
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-md-6 col-md-offset-3">
+
+			<?php
+				/**
+				 * woocommerce_before_single_product hook
+				 *
+				 * @hooked wc_print_notices - 10
+				 */
+				 do_action( 'woocommerce_before_single_product' );
+
+				 if ( post_password_required() ) {
+				 	echo get_the_password_form();
+				 	return;
+				 }
+			?>
 
 			<div itemscope itemtype="<?php echo woocommerce_get_product_schema(); ?>" id="product-<?php the_ID(); ?>" <?php post_class(); ?>>
 
@@ -47,12 +61,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 						 * @hooked woocommerce_template_single_meta - 40
 						 * @hooked woocommerce_template_single_sharing - 50
 						 */
-						
 						do_action( 'woocommerce_single_product_summary' );
-
 					?>
 
 				</div><!-- .summary -->
+
+				<hr class="margin-extra">
 
 				<?php
 					/**
@@ -68,7 +82,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<meta itemprop="url" content="<?php the_permalink(); ?>" />
 
 			</div><!-- #product-<?php the_ID(); ?> -->
-		</div> <!-- .col-md-12 -->
-	</div> <!-- .row -->
-</div> <!-- .container -->
-<?php do_action( 'woocommerce_after_single_product' ); ?>
+
+			<?php do_action( 'woocommerce_after_single_product' ); ?>
+
+		</div> <!-- /.col-md-12 -->
+	</div> <!-- /.row -->
+</div> <!-- /.container -->

@@ -7,6 +7,9 @@
  * @author 		WooThemes
  * @package 	WooCommerce/Templates
  * @version     1.6.4
+ *
+ * --- MOD ---
+ *
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -22,7 +25,7 @@ get_header( 'shop' ); ?>
 		 * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
 		 * @hooked woocommerce_breadcrumb - 20
 		 */
-		do_action( 'woocommerce_before_main_content' );
+		//do_action( 'woocommerce_before_main_content' );
 	?>
 
 		<?php while ( have_posts() ) : the_post(); ?>

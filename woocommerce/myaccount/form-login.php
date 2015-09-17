@@ -5,6 +5,9 @@
  * @author 		WooThemes
  * @package 	WooCommerce/Templates
  * @version     2.2.6
+ *
+ * --- MOD ---
+ *
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -15,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <?php wc_print_notices(); ?>
 
-<?php do_action( 'woocommerce_before_customer_login_form' ); ?>
+<?php //do_action( 'woocommerce_before_customer_login_form' ); ?>
 
 <?php if ( get_option( 'woocommerce_enable_myaccount_registration' ) === 'yes' ) : ?>
 
@@ -24,8 +27,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<div class="col-1">
 
 <?php endif; ?>
-
-		<h2><?php _e( 'Login', 'woocommerce' ); ?></h2>
+	
+		<h4 class="text-center"><?php _e( 'Login', 'woocommerce' ); ?></h4>
 
 		<form method="post" class="login">
 
@@ -42,15 +45,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 			<?php do_action( 'woocommerce_login_form' ); ?>
 
-			<p class="form-row">
+			<p class="form-row btn-login">
 				<?php wp_nonce_field( 'woocommerce-login' ); ?>
-				<input type="submit" class="button" name="login" value="<?php _e( 'Login', 'woocommerce' ); ?>" />
-				<label for="rememberme" class="inline">
+				<input type="submit" class="btn btn-default button" name="login" value="<?php esc_attr_e( 'Login', 'woocommerce' ); ?>" />
+				<label for="rememberme" class="inline text-regular">
 					<input name="rememberme" type="checkbox" id="rememberme" value="forever" /> <?php _e( 'Remember me', 'woocommerce' ); ?>
 				</label>
 			</p>
 			<p class="lost_password">
-				<a href="<?php echo esc_url( wc_lostpassword_url() ); ?>"><?php _e( 'Lost your password?', 'woocommerce' ); ?></a>
+				<a href="<?php echo esc_url( wp_lostpassword_url() ); ?>" class="small"><?php _e( 'Lost your password?', 'woocommerce' ); ?></a>
 			</p>
 
 			<?php do_action( 'woocommerce_login_form_end' ); ?>
@@ -100,7 +103,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 			<p class="form-row">
 				<?php wp_nonce_field( 'woocommerce-register' ); ?>
-				<input type="submit" class="button" name="register" value="<?php _e( 'Register', 'woocommerce' ); ?>" />
+				<input type="submit" class="button" name="register" value="<?php esc_attr_e( 'Register', 'woocommerce' ); ?>" />
 			</p>
 
 			<?php do_action( 'woocommerce_register_form_end' ); ?>

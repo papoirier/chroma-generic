@@ -1,10 +1,10 @@
 <?php
 /**
- * Single Product title
+ * Product loop title
  *
  * @author  WooThemes
  * @package WooCommerce/Templates
- * @version 1.6.4
+ * @version 2.4.0
  *
  * --- MOD ---
  *
@@ -15,4 +15,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 ?>
-<h4 itemprop="name" class="product_title entry-title text-center"><?php the_title(); ?></h4>
+<h4 class="text-center"><?php the_title(); ?></h4>
