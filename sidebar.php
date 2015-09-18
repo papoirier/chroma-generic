@@ -1,35 +1,33 @@
-<div class="navbar-collapse collapse">
-    <div class="row">
-    	<div class="col-md-12">
-			<ul class="nav nav-justified">
-				<li><a href="<?php echo get_home_url(); ?>"><span class="sc">Chroma</span></a></li>
-				<li class="btn-group">
-					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					<?php _e( 'Profile', 'chroma'); ?> <span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu">
-						<?php 
-						// local
-						// compte => 12 / account 7
-						// panier 679 / cart 768
-					 	$args = array('include' => '12,7,679,768');
-						$pages = get_pages($args); 
-						foreach ( $pages as $page ) {
-							$option = '<li><a href="' . get_page_link( $page->ID ) . '">';
-							$option .= $page->post_title;
-							$option .= '</a></li>';
-							echo $option;
-						}
-						?>
-					</ul>
-				</li>
-				<li>
-				
-						<?php custom_language_selector();?>
-						<?php //do_action('icl_language_selector'); ?>
-				</li>
-				
-			</ul>
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a href="<?php echo get_home_url(); ?>" class="navbar-brand sc">Chroma</a>
 		</div>
-	</div>
-</div>
+
+		<ul class="nav navbar-right menu-right">
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="<?php echo get_stylesheet_directory_uri() ?>/img/btn-profile.svg" title="profile"></a>
+				<ul class="dropdown-menu">
+					<?php $items = apply_filters( "wp_nav_menu_{$menu->slug}_items", $items, $args ); ?>
+					<?php if ( is_user_logged_in() ) { ?>
+				 	<li><a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" title="<?php _e('My Account','chroma'); ?>"><?php _e('My Account','chroma'); ?></a></li>
+				 	<?php
+					printf(
+						__( '<li><a href="%2$s">Sign out</a></li>', 'woocommerce' ) . ' ',
+						$current_user->display_name,
+						wc_get_endpoint_url( 'customer-logout', '', wc_get_page_permalink( 'myaccount' ) )
+						); ?>
+					 <?php } 
+					 else { ?>
+					 	<li><a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" title="<?php _e('Login / Register','chroma'); ?>"><?php _e('Login / Register','chroma'); ?></a></li>
+					 <?php } ?>
+				</ul>
+			</li>
+			<li><?php custom_language_selector();?></li>
+		</ul>
+	</div><!-- /.container-fluid -->
+	
+</nav>
+
+
+

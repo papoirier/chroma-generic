@@ -22,9 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <?php if ( get_option( 'woocommerce_enable_myaccount_registration' ) === 'yes' ) : ?>
 
-<div class="col2-set" id="customer_login">
-
-	<div class="col-1">
+<div class="" id="customer_login">
 
 <?php endif; ?>
 	
@@ -60,13 +58,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		</form>
 
+		<a href="' .get_permalink(woocommerce_get_page_id('myaccount')). '?action=register"> register </a>
+
 <?php if ( get_option( 'woocommerce_enable_myaccount_registration' ) === 'yes' ) : ?>
 
-	</div>
+</div> <!-- /#customer_login -->
 
-	<div class="col-2">
+<div class="" id="customer_registration">
 
-		<h2><?php _e( 'Register', 'woocommerce' ); ?></h2>
+		<h4 class="text-center"><?php _e( 'Register', 'woocommerce' ); ?></h4>
 
 		<form method="post" class="register">
 
@@ -103,16 +103,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 			<p class="form-row">
 				<?php wp_nonce_field( 'woocommerce-register' ); ?>
-				<input type="submit" class="button" name="register" value="<?php esc_attr_e( 'Register', 'woocommerce' ); ?>" />
+				<input type="submit" class="button btn btn-default" name="register" value="<?php esc_attr_e( 'Register', 'woocommerce' ); ?>" />
 			</p>
 
 			<?php do_action( 'woocommerce_register_form_end' ); ?>
 
 		</form>
 
-	</div>
+	</div> <!-- /#customer_registration -->
 
-</div>
 <?php endif; ?>
 
 <?php do_action( 'woocommerce_after_customer_login_form' ); ?>

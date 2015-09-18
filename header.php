@@ -29,12 +29,4 @@
   </head>
   <body data-spy="scroll" data-target="#navbar" data-offset="10" <?php if(is_home()) {echo "class=\"home\"";} ?>>
   <!-- NAV - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-    <nav class="navbar navbar-default">
-      <div id="navcolor" class="intro">
-        <div class="container">
-            <?php //if(!is_front_page()) { 
-              get_sidebar(); 
-            //} ?>
-        </div>
-      </div>
-    </nav>
+  <?php get_sidebar(); ?>

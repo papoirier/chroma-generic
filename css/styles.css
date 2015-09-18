@@ -142,6 +142,44 @@ nav.navbar {
   border: none;
   min-height: 40px;
 }
+.navbar-header {
+  text-align: center;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .navbar .container-fluid .navbar-brand {
+    margin: 0;
+  }
+}
+.navbar-right .dropdown-menu {
+  right: 0;
+  left: auto;
+}
+.navbar-header {
+  padding: 15px;
+}
+.navbar-brand {
+  float: none;
+}
+.navbar-default .navbar-brand,
+.navbar-brand {
+  color: #6b917d;
+}
+.menu-right {
+  position: absolute;
+  right: 0;
+  display: block;
+  top: 0;
+  margin-right: 15px;
+}
+.menu-right li {
+  display: inline-block;
+}
+@media (min-width: 768px) {
+  .navbar-nav.navbar-right:last-child {
+    margin-right: 0;
+  }
+}
 #lang_sel_click a {
   font-family: "MarkWeb", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
@@ -157,6 +195,17 @@ nav.navbar {
 }
 #lang_sel_click a.lang_sel_sel:hover {
   color: #226440;
+}
+.btn-profile {
+  background: url('../img/btn-profile.svg') center no-repeat;
+  width: 30px;
+  height: 30px;
+  border: none;
+  background-color: transparent;
+}
+.btn-profile:hover {
+  background-color: #f1f1f1;
+  border: none;
 }
 body.home section {
   min-height: 300px;

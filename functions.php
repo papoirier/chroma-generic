@@ -225,6 +225,20 @@ function custom_language_selector(){
     }
 }
 
+function wptt_add_loginout_link( $items, $args ) {
+ 
+    if ( is_user_logged_in() ) {
+        $items .= '<li><a href="'. wp_logout_url( get_permalink( woocommerce_get_page_id( 'myaccount' ) ) ) .'">Log Out</a></li>';
+    } elseif ( ! is_user_logged_in() ) {
+        $items .= '<li><a href="' . get_permalink( woocommerce_get_page_id( 'myaccount' ) ) . '">Log In</a></li>';
+    }
+ 
+    return $items;
+ 
+} // wptt_add_loginout_link
+add_filter( 'wp_nav_menu_footer-my-account_items', 'wptt_add_loginout_link', 10, 2 );
+ 
+
 // SCRIPTS ------------------------------------------------------
 
 add_action( 'wp_enqueue_scripts', 'bootstrap_script' );
