@@ -1,7 +1,9 @@
 <nav class="navbar navbar-default">
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<a href="<?php echo get_home_url(); ?>" class="navbar-brand sc">Chroma</a>
+			<?php if (!is_front_page()) { ?>
+				<a href="<?php echo get_home_url(); ?>" class="navbar-brand sc">Chroma</a>
+			<?php } ?>
 		</div>
 
 		<ul class="nav navbar-right menu-right">
@@ -11,14 +13,14 @@
 					<?php $items = apply_filters( "wp_nav_menu_{$menu->slug}_items", $items, $args ); ?>
 					<?php if ( is_user_logged_in() ) { ?>
 				 	<li><a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" title="<?php _e('My Account','chroma'); ?>"><?php _e('My Account','chroma'); ?></a></li>
+				 	<li><a href="<?php echo wc_get_page_permalink( 'cart' ); ?>"><?php _e('Cart','chroma'); ?></a></li>
 				 	<?php
 					printf(
 						__( '<li><a href="%2$s">Sign out</a></li>', 'woocommerce' ) . ' ',
 						$current_user->display_name,
 						wc_get_endpoint_url( 'customer-logout', '', wc_get_page_permalink( 'myaccount' ) )
 						); ?>
-					 <?php } 
-					 else { ?>
+					 <?php } else { ?>
 					 	<li><a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" title="<?php _e('Login / Register','chroma'); ?>"><?php _e('Login / Register','chroma'); ?></a></li>
 					 <?php } ?>
 				</ul>

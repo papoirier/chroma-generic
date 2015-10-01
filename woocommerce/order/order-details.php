@@ -5,6 +5,9 @@
  * @author  WooThemes
  * @package WooCommerce/Templates
  * @version 2.4.0
+ *
+ * --- MOD ---
+ *
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -13,8 +16,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $order = wc_get_order( $order_id );
 ?>
-<h2><?php _e( 'Order Details', 'woocommerce' ); ?></h2>
-<table class="shop_table order_details">
+<h4 class="text-center sc"><?php _e( 'Order Details', 'woocommerce' ); ?></h4>
+<table class="shop_table order_details table">
 	<thead>
 		<tr>
 			<th class="product-name"><?php _e( 'Product', 'woocommerce' ); ?></th>
@@ -39,7 +42,7 @@ $order = wc_get_order( $order_id );
 			foreach ( $order->get_order_item_totals() as $key => $total ) {
 				?>
 				<tr>
-					<th scope="row"><?php echo $total['label']; ?></th>
+					<th><?php echo $total['label']; ?></th>
 					<td><?php echo $total['value']; ?></td>
 				</tr>
 				<?php

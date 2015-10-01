@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <?php $url = wp_get_attachment_url( get_post_thumbnail_id($page->ID, 'full') ); ?>
+      <?php $url = wp_get_attachment_url( get_post_thumbnail_id($page->ID, 'large') ); ?>
       <img src="<?php echo $url; ?>" class="">
     </div>
   </div>
@@ -21,9 +21,5 @@
       <?php } ?>
       <?php wp_reset_query(); ?>
   </div> <!-- /.row -->
-
-  <!-- div class="row top-pad" -->
-    <!-- div class="col-md-6" -->
-      <?php //the_content(); ?>
 
 </div> <!-- /.container -->

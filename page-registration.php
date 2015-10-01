@@ -13,27 +13,29 @@ woo_main_before();
 if ( have_posts() ) :
 while ( have_posts() ) : the_post();
 ?>   
-    <?php // FAQ // 518, 439 // CREDITS // 645, 652 ?>
-    <div class="container my-account-page top-pad"> 
-        <?php
-        if (has_post_thumbnail()) {
-            $thumb_id = get_post_thumbnail_id();
-            $thumb_url = wp_get_attachment_image_src($thumb_id,'large', true); ?>
-            <div class="row">
-                <div class="col-md-6 col-md-offset-3">
-                    <div class="portrait">
-                        <img src="<?php echo $thumb_url[0]; ?>" class="img-circle center-block">
-                    </div>
+
+<div class="container my-account-page top-pad"> 
+    <?php
+    if (has_post_thumbnail()) {
+        $thumb_id = get_post_thumbnail_id();
+        $thumb_url = wp_get_attachment_image_src($thumb_id,'large', true); ?>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="portrait">
+                    <img src="<?php echo $thumb_url[0]; ?>" class="img-circle center-block">
                 </div>
             </div>
-       <?php } ?>
+        </div>
+   <?php } ?>
 
-        <div class="row">
             
-                
-            <?php if ( get_option( 'woocommerce_enable_myaccount_registration' ) === 'yes' ) : ?>
+    <?php if ( get_option( 'woocommerce_enable_myaccount_registration' ) === 'yes' ) : ?>
 
-</div> <!-- /#customer_login -->
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+
+
 
 <div class="" id="customer_registration">
 
@@ -83,11 +85,12 @@ while ( have_posts() ) : the_post();
 
     </div> <!-- /#customer_registration -->
 
-<?php endif; ?>
-                
             
-        </div>
-    </div><!-- .container.top-pad -->
+        </div> <!-- /.col-md-6 -->
+    </div> <!-- /.row -->
+    <?php endif; ?>
+
+</div> <!-- /.container.top-pad -->
             
 <?php endwhile; ?>
 <?php endif; ?>     

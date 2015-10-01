@@ -37,6 +37,7 @@ jQuery(document).ready(function($) {
 
   // variable product
   $("#pa_color").after('<span class="caret">');
+  $("#pa_length").after('<span class="caret">');
 
   // $(window).resize(function(){
   //   if ($(window).width() > 767) {

@@ -16,7 +16,7 @@ if ( ! apply_filters( 'woocommerce_order_item_visible', true, $item ) ) {
 }
 ?>
 <tr class="<?php echo esc_attr( apply_filters( 'woocommerce_order_item_class', 'order_item', $item, $order ) ); ?>">
-	<td class="product-name">
+	<th class="product-name">
 		<?php
 			$is_visible = $product && $product->is_visible();
 
@@ -30,7 +30,7 @@ if ( ! apply_filters( 'woocommerce_order_item_visible', true, $item ) ) {
 
 			do_action( 'woocommerce_order_item_meta_end', $item_id, $item, $order );
 		?>
-	</td>
+	</th>
 	<td class="product-total">
 		<?php echo $order->get_formatted_line_subtotal( $item ); ?>
 	</td>

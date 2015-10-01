@@ -187,6 +187,9 @@ nav.navbar {
     right: 0;
     left: auto;
 }
+.dropdown-menu li {
+	width: 100%;
+}
 .navbar-header {
 	padding: 15px;
 }
@@ -347,7 +350,7 @@ img,
 }
 .intro-logo {
 	margin-top: 5%;
-	margin-bottom: 2em;
+	margin-bottom: 3em;
 }
 .intro-text {}
 // .made-in-qc {
@@ -508,7 +511,21 @@ hr.margin-extra {
 .single_variation_wrap {
 	text-align: center;
 	margin: 2em 0;
+	//background-color: aqua;
 }
+.single_variation {
+	//background-color: red;
+	font-size: @font-size-h3;
+}
+.variations_button {
+	//background-color: yellow;
+	margin-top: 2em;
+}
+// .quantity,
+// .variations_button button {
+// 	display: inline-block;
+// 	float: left;
+// }
 .bg-warning {
 	padding: 1em;
 	margin-top: 1em;
@@ -540,6 +557,20 @@ table.center {
 	background-color: @green;
 	border-color: @green;
 	color: #FFF;
+	margin: 0;
+}
+// .wc-proceed-to-checkout {
+// 	display: block;
+// 	background-color: red;
+// }
+// .wc-proceed-to-checkout a {
+// 	margin-left: auto;
+// 	margin-right: auto;
+// }
+
+#place_order {
+	display: block;
+	margin: 3em auto 0 auto;
 }
 
 // select button
@@ -693,6 +724,17 @@ form.woocommerce-shipping-calculator p {
 	letter-spacing: 0px;
 	margin-bottom: 2em;
 }
+td.actions {
+	display: table-cell;
+	width: 100%;
+	//background-color: yellow;
+}
+td.actions input {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 1em;
+}
 
 // next step buttons
 @media (min-width: 768px) {
@@ -704,9 +746,19 @@ form.woocommerce-shipping-calculator p {
 		margin: 3em 0;
 	}
 }
+.wc-proceed-to-checkout a {
+	margin-left: auto;
+	margin-right: auto;
+}
 
 // CHECKOUT --------------------------------
-
+.page-checkout h4.text-center.sc {
+	margin: 2em 0;
+}
+.page-checkout table.table th,
+.page-checkout table.table th.product-name {
+	width: 50%;
+}
 abbr.required {
 	border-bottom: none;
 }
@@ -833,119 +885,18 @@ fieldset#stripe-cc-form input {
 		margin-bottom: 1em;
 	}
 }
-
-/*
-@dropdown-width: 180px;
-#customer_details label {
-	//font-weight: normal;
+.customer_details p,
+.customer_details address {
+	margin-bottom: 1.4em;
 }
-#customer_details abbr.required {
-	margin-right: 0.5em;
+p.thankyou {
+	margin-bottom: 3em;
 }
-#customer_details span.country {
-	margin-right: 0.5em;
-}
-#customer_details #billing_country_chosen {
-	width: @dropdown-width;
-}
-#customer_details li.highlighted {
-	background-color: @bootstrap-blue;
-	background-image: none;
-}
-#customer_details ul.chosen-results {
-	text-align: left;
-	margin: 0;
-	padding: 0;
-}
-#customer_details li {
-	padding: 6px 5px;
-}
-#customer_details a, 
-#customer_details ul, 
-#customer_details li {
-	text-align: left !important;
-}
-#customer_details a.chosen-single, .chosen-drop {
-	width: @dropdown-width;
-	font-size: @font-size-base;
-}
-#customer_details a.chosen-single {
-	background-image: none;
-	background: transparent;
-	border: 1px solid #ccc;
-	box-shadow: none;
-	color: #333;
-	background-color: #fff;
-	border-radius: 4px;
-	display: inline-block;
-	padding: 6px 12px;
-	margin: 0;
-	font-size: @font-size-base;
-	font-weight: normal;
-	line-height: 1.42857143;
-	text-align: center;
-	white-space: nowrap;
-	vertical-align: middle;
-	cursor: pointer;
-	height: 34px;
-}
-#customer_details a.chosen-single div > b {
-	background-image: none !important;
-	display: inline-block;
-	width: 0;
-	height: 0;
-	vertical-align: middle;
-	border-top: 4px solid;
-	border-right: 4px solid transparent;
-	border-left: 4px solid transparent;
-	margin: 10px 10px 0 0;
-}
-
-#customer_details .chosen-drop {
-	background-image: none;
-	background-color: #fff;
-	border: 1px solid #ccc;
-	border-top: none;
-	margin-top: -6px;
-	padding-top: 5px;
-	box-shadow: none;
-}
-input#place_order {
-	background-image: none;
-	background: transparent;
-	border: 1px solid #ccc;
-	box-shadow: none;
-	color: #333;
-	background-color: #fff;
-	border-radius: 4px;
-	display: inline-block;
-	padding: 6px 12px;
-	margin: 0;
-	font-size: @font-size-base;
-	font-weight: normal;
-	line-height: 1.42857143;
-	text-align: center;
-	white-space: nowrap;
-	vertical-align: middle;
-	cursor: pointer;
-	//height: 34px;
-}
-*/
 ul, 
 li {
 	padding-left: 0;
 	list-style-type: none;
 	text-decoration: none;
-}
-#payment ul li label, 
-#payment ul.payment_methods li label {
-	font-weight: normal;
-}
-#order_review tfoot th {
-	//&:extend(.small-caps-th);	
-}
-#order_review thead th {
-	//font-weight: bold;
 }
 
 // invalid fields
