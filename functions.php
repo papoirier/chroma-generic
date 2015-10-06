@@ -1,8 +1,8 @@
 <?php
 
-/*-----------------------------------------------------------------------------------*/
-/* Start WooThemes Functions - Please refrain from editing this section */
-/*-----------------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------------
+ * Start WooThemes Functions - Please refrain from editing this section
+ *----------------------------------------------------------------------------------- */
 
 // Define the theme-specific key to be sent to PressTrends.
 define( 'WOO_PRESSTRENDS_THEMEKEY', 'zdmv5lp26tfbp7jcwiw51ix9sj389e712' );
@@ -10,9 +10,9 @@ define( 'WOO_PRESSTRENDS_THEMEKEY', 'zdmv5lp26tfbp7jcwiw51ix9sj389e712' );
 // WooFramework init
 require_once ( get_template_directory() . '/functions/admin-init.php' );
 
-/*-----------------------------------------------------------------------------------*/
-/* Load the theme-specific files, with support for overriding via a child theme.
-/*-----------------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------------
+ * Load the theme-specific files, with support for overriding via a child theme.
+ *----------------------------------------------------------------------------------- */
 
 $includes = array(
         'includes/theme-options.php',       // Options panel settings and custom settings
@@ -33,6 +33,7 @@ $includes = apply_filters( 'woo_includes', $includes );
 foreach ( $includes as $i ) {
   locate_template( $i, true );
 }
+
 
 // WOOCOMMERCE SETUP -------------------------------------
 
@@ -115,6 +116,19 @@ add_filter('woocommerce_grouped_price_html','custom_from',10);
 add_filter('woocommerce_variable_sale_price_html','custom_from',10);
 function custom_from($price){
     return false;
+}
+
+// Ensure cart contents update when products are added to the cart via AJAX (place the following in functions.php)
+add_filter( 'woocommerce_add_to_cart_fragments', 'woocommerce_header_add_to_cart_fragment' );
+function woocommerce_header_add_to_cart_fragment( $fragments ) {
+  ob_start();
+  ?>
+  <a class="cart-contents" href="<?php echo WC()->cart->get_cart_url(); ?>" title="<?php _e( 'Cart','chroma'); ?>"><?php echo _e( 'Cart ','chroma') ; echo sprintf (_n( '(%d)', '(%d)', WC()->cart->cart_contents_count ), WC()->cart->cart_contents_count ); ?></a>
+  <?php
+  
+  $fragments['a.cart-contents'] = ob_get_clean();
+  
+  return $fragments;
 }
 
 // GLOBAL ------------------------------------------------------

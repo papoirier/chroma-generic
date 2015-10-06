@@ -174,6 +174,12 @@ nav.navbar {
 	border: none;
 	min-height: 40px;
 }
+nav a,
+nav li.sc a,
+.navbar-default .navbar-brand,
+.navbar-brand {
+	color: @darkgray;
+}
 .navbar-header {
     text-align: center;
     width: 100%;
@@ -195,11 +201,6 @@ nav.navbar {
 }
 .navbar-brand {
 	float:none;
-}
-.navbar-default .navbar-brand,
-.navbar-brand {
-	color: @link;
-	
 }
 .menu-right {
 	position: absolute;
@@ -508,7 +509,8 @@ footer li.subtitle {
 hr.margin-extra {
 	margin: 3em 0;
 }
-.single_variation_wrap {
+.single_variation_wrap,
+form.cart {
 	text-align: center;
 	margin: 2em 0;
 	//background-color: aqua;
@@ -615,7 +617,7 @@ _:-o-prefocus, .selector {
 
 // amount
 span.amount {
-	//font-size: @font-size-h3;
+	font-size: @font-size-h3;
 }
 .quantity {
 	margin: 0 0 1em 0;

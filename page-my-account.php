@@ -15,14 +15,14 @@ while ( have_posts() ) : the_post();
 ?>   
     <?php // FAQ // 518, 439 // CREDITS // 645, 652 ?>
     <div class="container my-account-page top-pad"> 
-        <?php
-        if (has_post_thumbnail()) {
-            $thumb_id = get_post_thumbnail_id();
-            $thumb_url = wp_get_attachment_image_src($thumb_id,'large', true); ?>
+        <?php if (has_post_thumbnail()) { ?>
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">
                     <div class="portrait">
-                        <img src="<?php echo $thumb_url[0]; ?>" class="img-circle center-block">
+                        <?php $thumb = wp_get_attachment_image_src( get_post_thumbnail_id(), 'medium');
+                        $url = $thumb[0];
+                         //$url = wp_get_attachment_url( get_post_thumbnail_id($post->ID, 'medium') ); ?>
+                        <img src="<?php echo $url; ?>" class="img-circle center-block">
                     </div>
                 </div>
             </div>

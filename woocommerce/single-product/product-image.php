@@ -18,7 +18,9 @@ global $post, $woocommerce, $product;
 
 ?>
 <div class="images">
-
+	<?php //if (get_post_meta($post->ID, "product-image", true)) { ?>
+    	<!-- img src="<?php //echo get_post_meta($post->ID, "product-image", true); ?>" title="product image" -->
+    <?php //} ?>
 	<?php
 		if ( has_post_thumbnail() ) {
 

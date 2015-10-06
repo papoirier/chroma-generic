@@ -18,7 +18,7 @@ while ( have_posts() ) : the_post();
         <?php
         if (has_post_thumbnail()) {
             $thumb_id = get_post_thumbnail_id();
-            $thumb_url = wp_get_attachment_image_src($thumb_id,'large', true); ?>
+            $thumb_url = wp_get_attachment_image_src($thumb_id,'medium', true); ?>
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">
                     <div class="portrait">
