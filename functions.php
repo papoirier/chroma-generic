@@ -95,6 +95,14 @@ function isa_product_additional_information_heading() {
 
 }
 
+// Display Price For Variable Product With Same Variations Prices
+add_filter('woocommerce_available_variation', function ($value, $object = null, $variation = null) {
+    if ($value['price_html'] == '') {
+        $value['price_html'] = '<span class="price">' . $variation->get_price_html() . '</span>';
+    }
+    return $value;
+}, 10, 3);
+
 // SHOP PAGE --------------------------------------------
 
 // removing stuff

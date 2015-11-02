@@ -29,7 +29,7 @@ while ( have_posts() ) : the_post();
        <?php } ?>
 
         <div class="row">
-            <div class="col-md-6 col-md-offset-3">
+            <div class="<?php if ( is_page('679') || is_page('11') ) { echo 'col-md-8 col-md-offset-2'; } else { echo 'col-md-6 col-md-offset-3';} ?>">
                 <?php the_content(); ?>
             </div>
         </div>

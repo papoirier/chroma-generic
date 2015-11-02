@@ -18,7 +18,7 @@ jQuery(document).ready(function($) {
   $('[data-toggle="tooltip"]').tooltip();
 
   // single product > style the dropdowns
-  $('select#pa_length').parent().css('width', '80px');
+  //$('select#pa_length').parent().css('width', '80px');
 
   // remove width and height attributes
   $('div.intro-mobile-img > img').attr('width', '100%');

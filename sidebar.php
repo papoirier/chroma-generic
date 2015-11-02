@@ -2,7 +2,7 @@
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<?php if (!is_front_page()) { ?>
-				<a href="<?php echo get_home_url(); ?>" class="navbar-brand sc">Chroma</a>
+				<a href="<?php echo get_home_url(); ?>" class="navbar-brand sc"><img src="<?php echo get_stylesheet_directory_uri() ?>/img/logo-inline.svg" title="logo" alt="CHROMA"></a>
 			<?php } ?>
 		</div>
 
@@ -28,7 +28,6 @@
 			<li><?php custom_language_selector();?></li>
 		</ul>
 	</div><!-- /.container-fluid -->
-	
 </nav>
 
 
