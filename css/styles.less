@@ -166,6 +166,8 @@ input,
 input.form-control,
 .form-control {
 	box-shadow: none;
+	border: 1px solid @darkgray;
+	border-radius: 0px;
 }
 hr {
 	border-color: @darkgray;
@@ -382,9 +384,11 @@ img,
 #the-felt img {
 	max-width: 100%;
 }
-.intro-logo {
-	margin-top: 5%;
-	margin-bottom: 3em;
+@media (min-width: 768px) {
+	.intro-logo {
+		margin-top: 5%;
+		margin-bottom: 3em;
+	}
 }
 .intro-text {}
 // .made-in-qc {
@@ -492,7 +496,7 @@ img,
 
 @font-size-footer: 14px;
 footer {
-	background-image: url('../img/wiggle-single.png');
+	background-image: url('../img/wiggle-single.svg');
 	background-repeat: repeat-x;
 }
 footer .container {
@@ -1034,10 +1038,11 @@ ul.woocommerce-error li strong{
 	border-color: #a94442 !important;
 }
 #mc-embedded-subscribe {
-	font-size: 16px;
-	background-color: @link;
-	border: none;
-	color: #FFF;
+	font-size: @font-size-base;
+	border-color: @link;
+	color: @link;
+	//background-color: @link;
+	//border: none;
 	margin-top: 1em;
 }
 
@@ -1070,7 +1075,8 @@ p.btn-login {
 }
 @media (max-width: 767px) {
 	.intro-logo {
-		margin-bottom: 3em;
+		margin: 2em auto 3em auto;
+		max-width: 85%;
 	}
 	.wiggle {
 		margin: 0;
