@@ -39,11 +39,11 @@ jQuery(document).ready(function($) {
   $("#pa_color").after('<span class="caret">');
   $("#pa_length").after('<span class="caret">');
 
-  // $(window).resize(function(){
-  //   if ($(window).width() > 767) {
-  //     fullIntro();
-  //   };
-  // });
+  $(window).resize(function(){
+    if ($(window).width() > 767) {
+      fullIntro();
+    };
+  });
   //$(window).trigger('resize');
   // $(window).scroll(function() {});
 

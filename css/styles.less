@@ -4,11 +4,12 @@
 @green-dark: 		#226440;
 @blue: 				#00476B;
 @bootstrap-blue: 	rgb(66, 139, 202);
-@lightgray: 		#F1F1F1;
+@verylightgray: 		#F1F1F1;
 @white: 			rgba(255, 255, 255, 0.7);
 @darkgray:			rgb(51, 51, 51);
 @darkgray-alpha:	rgba(51, 51, 51, 0.7);
-@placeholder-gray:	#555;
+@placeholder-gray:	#888;
+@lightgray:			#ddd;
 @midgray:			rgb(200,200,200);
 @link:				rgb(107,145,125);
 @link-hover:		rgb(157,193,163);
@@ -164,10 +165,12 @@ a:active {
 // GENERAL STYLING  // ------------------
 input,
 input.form-control,
-.form-control {
+.form-control,
+.input-text.form-control {
 	box-shadow: none;
 	border: 1px solid @darkgray;
 	border-radius: 0px;
+	color: @darkgray;
 }
 hr {
 	border-color: @darkgray;
@@ -200,6 +203,9 @@ nav li.sc a,
 	}
 	.navbar .container-fluid .navbar-brand {
 	    margin: 0;
+	}
+	.navbar .container-fluid .navbar-brand img {
+	    margin-top: 1px;
 	}
 }
 .navbar-right .dropdown-menu {
@@ -234,8 +240,14 @@ nav li.sc a,
 	top:0;
 	margin-right: 15px;
 }
+.nav li.dropdown a img {
+	margin-top: -5px;
+}
 .menu-right li {
 	display: inline-block;
+}
+.menu-right li.sc {
+	margin-top: 11px;
 }
 @media (min-width: 768px) {
 	.navbar-nav.navbar-right:last-child {
@@ -247,7 +259,7 @@ nav li.sc a,
 	font-family: @font-family-sans-serif;
 	font-weight: normal;
 	font-size: @font-size-base;
-	border: 1px solid @lightgray;
+	border: 1px solid @verylightgray;
 	border-radius: 4px;
 	padding: 6px 12px;
 }
@@ -268,11 +280,17 @@ nav li.sc a,
 	background-color: transparent;
 }
 .btn-profile:hover {
-	background-color: @lightgray;
+	background-color: @verylightgray;
 	border: none;
 }
 
 // GENERAL // ----------------------------
+hr#ALIGN {
+	position: absolute;
+	top: 12px;
+	border-color: aqua;
+	width: 100%;
+}
 body.home section {
 	min-height: 300px;
 	padding-top: 2em;
@@ -284,7 +302,7 @@ body.home section {
 	}
 	.container.generic-page h4,
 	.container.my-account-page h4 {
-		margin-bottom: 3em;
+		margin-bottom: 4em;
 	}
 }
 @media (max-width: 767px) {
@@ -293,7 +311,7 @@ body.home section {
 	}
 	.container.generic-page h4,
 	.container.my-account-page h4 {
-		margin-bottom: 1.5em;
+		margin-bottom:2em;
 	}
 }
 .more {
@@ -478,10 +496,10 @@ img,
 	padding-bottom: 1em;
 }
 .skew-right {
-	background-image: url('../img/wiggle-skew-right.png');
+	background-image: url('../img/wiggle-skew-right.svg');
 }
 .skew-left {
-	background-image: url('../img/wiggle-skew-left.png');
+	background-image: url('../img/wiggle-skew-left.svg');
 }
 
 // THE STORY // ------------------------------
@@ -500,7 +518,7 @@ footer {
 	background-repeat: repeat-x;
 }
 footer .container {
-	margin: 2em auto 1em auto;
+	margin: 4em auto 1em auto;
 	padding-top: 4em;
 }
 footer ul {
@@ -517,7 +535,7 @@ footer li a:visited {
 	color: @darkgray;
 }
 footer li a:hover {
-	color: @midgray;
+	color: @lightgray;
 }
 footer li.subtitle {
 	font-size: @font-size-base*0.65;
@@ -601,7 +619,7 @@ table.center {
 }
 .single_add_to_cart_button:hover,
 .btn.btn-default.btn-lg.green:hover {
-	background-color: @lightgray;
+	background-color: @verylightgray;
 }
 // .wc-proceed-to-checkout {
 // 	display: block;
@@ -658,7 +676,7 @@ select {
 	pointer-events: none;
 }
 .variations select:hover {
-	background-color: @lightgray;
+	background-color: @verylightgray;
 }
 select:focus { 
 	outline: none; 
@@ -708,8 +726,8 @@ input.plus {
 	margin-left: 0.5em;
 }
 .quantity input.qty {
-	max-width: 70px;
-	text-align: center;
+	max-width: 54px;
+	//text-align: center;
 	font-size: @font-size-h4;
 	padding: 0;
 }
@@ -732,7 +750,7 @@ label span.amount {
 }
 dl.variation,
 .product-quantity .quantity input {
-	margin-top: 0.5em;
+	//margin-top: 0.5em;
 }
 dl.variation dt,
 dl.variation dd,
@@ -748,27 +766,27 @@ dl.variation dd,
 dl.variation dd p {
 	font-weight: bold;
 }
-
 td.product-quantity input,
 input#quantity {
-	font-size: @font-size-base;
 	&:extend(select);
-	//width: 80px;
+	padding: 6px 0px 6px 10px;
+	font-size: @font-size-base;
+	border-color: @lightgray;
+	//color: @darkgray;
 }
-.table tbody tr td {
-	//padding-top: 10px;
-}
-.table tbody tr td.product-quantity {
-	//padding-top: 4px;
-}
-.product-quantity .quantity input.qty {
-
-}
+// product thumbnail
 td.product-thumbnail a img {
 	margin-right: 0;
 }
 td.product-thumbnail {
 	width: 220px;
+}
+@media (max-width: 767px) {
+	th.product-thumbnail,
+	td.product-thumbnail {
+		display: none;
+		visibility: hidden;
+	}
 }
 td ul#shipping_method li {
 	margin-bottom: 0.25em;
@@ -777,7 +795,6 @@ td ul#shipping_method li label {
 	margin-left: 0.5em;
 }
 form.woocommerce-shipping-calculator p a.shipping-calculator-button {
-	//font-size: @font-size-h6;
 	&:extend(.small-caps-th);
 }
 form.woocommerce-shipping-calculator p {
@@ -786,6 +803,11 @@ form.woocommerce-shipping-calculator p {
 }
 .cart-collaterals {
 	margin-top: 4em;
+}
+@media (max-width: 767px) {
+	.cart-collaterals {
+		margin-top: 2em;
+	}
 }
 .cart_totals h5 {
 	font-family: @font-family-sans-serif;
@@ -822,7 +844,7 @@ td.actions input {
 
 // CHECKOUT --------------------------------
 .page-checkout h4.text-center.sc {
-	margin: 2em 0;
+	margin: 3em 0 2em 0;
 }
 .page-checkout table.table th,
 .page-checkout table.table th.product-name {
@@ -863,7 +885,7 @@ textarea#order_comments.input-text {
 }
 .select2-container .select2-choice,
 textarea#order_comments {
-	border: 1px solid @darkgray;
+	border: 1px solid @lightgray;
 	border-radius: 0px;
     padding: 6px 12px;
     margin: 0;
@@ -882,7 +904,7 @@ textarea#order_comments {
 .select2-drop.select2-drop-above.select2-drop-active,
 .select2-dropdown-open.select2-drop-above .select2-choice,
 .state-select.select2-container-active a {
-	border-color: @darkgray;
+	border-color: @lightgray;
 	border-radius: 0px;
 }
 .select2-search {
@@ -913,7 +935,7 @@ th.product-name {
 	font-size: @font-size-h6;
 	line-height: 1.4em;
 	margin: 0.5em 0 1.5em 0;
-	color: @midgray;
+	color: @darkgray-alpha;
 	font-weight: normal;
 }
 fieldset#stripe-cc-form p {
@@ -922,7 +944,7 @@ fieldset#stripe-cc-form p {
 	color: @darkgray;
 }
 fieldset#stripe-cc-form input {
-	border: 1px solid @darkgray;
+	border: 1px solid @lightgray;
 	border-radius: 0px;
     padding: 6px 12px;
     margin: 0;

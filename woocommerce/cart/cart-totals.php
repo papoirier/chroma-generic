@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<?php do_action( 'woocommerce_before_cart_totals' ); ?>
 
-	<h4 class="text-center sc"><?php _e( 'Cart Totals', 'woocommerce' ); ?></h4>
+	<h4 class="sc"><?php _e( 'Cart Totals', 'woocommerce' ); ?></h4>
 
 	<table class="table">
 
