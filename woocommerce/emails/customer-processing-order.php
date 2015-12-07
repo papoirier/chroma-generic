@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <?php do_action( 'woocommerce_email_before_order_table', $order, $sent_to_admin, $plain_text ); ?>
 
-<h2><?php printf( __( 'Order #%s', 'woocommerce' ), $order->get_order_number() ); ?></h2>
+<h4><?php printf( __( 'Order #%s', 'woocommerce' ), $order->get_order_number() ); ?></h4>
 
 <table class="table" id="c-processing">
 	<thead>

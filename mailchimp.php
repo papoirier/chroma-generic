@@ -31,7 +31,7 @@
 			</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
 			<div style="position: absolute; left: -5000px;"><input type="text" name="b_56754793e0770e7a74abf00f3_eae29c0efc" tabindex="-1" value=""></div>
 			<div class="clear">
-				<input type="submit" value="<?php _e( 'Subscribe', 'chroma' );?>" name="subscribe" id="mc-embedded-subscribe" class="btn btn-default">
+				<input type="submit" value="<?php _e( 'Subscribe', 'chroma' );?>" name="subscribe" id="mc-embedded-subscribe" class="btn btn-default btn-lg green">
 			</div>
 		</div>
 	</form>

@@ -5,30 +5,21 @@ if ( ! empty( $_SERVER['SCRIPT_FILENAME'] ) && basename( __FILE__ ) == basename(
 }
 ?>
 <?php get_header(); ?>
-       
-    <div id="content" class="col-full">
-    	
-    	<?php woo_main_before(); ?>
-    
-		<section id="main" class="col-left">
-                                                                                
-            <div class="page">
-				
-				<header>
-                	<h1><?php _e( 'Error 404 - Page not found!', 'woothemes' ); ?></h1>
-                </header>
-                <section class="entry">
-                	<p><?php _e( 'The page you trying to reach does not exist, or has been moved. Please use the menus or the search box to find what you are looking for.', 'woothemes' ); ?></p>
-                </section>
-
-            </div><!-- /.post -->
-                                                
-        </section><!-- /#main -->
-        
-        <?php woo_main_after(); ?>
-
-        <?php get_sidebar(); ?>
-
-    </div><!-- /#content -->
-		
+<?php woo_main_before(); ?>
+<div class="container generic-page top-pad four-o-four-page">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <header>
+                <h4 class="text-center"><?php _e( 'Error 404 - Page not found!', 'chroma' ); ?></h4>
+            </header>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <p><?php _e( 'Clearly, the page you trying to reach does not exist nor ever has.', 'chroma');?></p>
+            <p class="sc"><a href="<?php echo icl_get_home_url(); ?>"><?php _e('Go home!', 'chroma');?></a></p>
+        </div>
+    </div>
+</div>
+<?php woo_main_after(); ?>		
 <?php get_footer(); ?>

@@ -5,6 +5,9 @@
  * @author  WooThemes
  * @package WooCommerce/Templates
  * @version 2.0.0
+ *
+ * --- MOD ---
+ *
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -15,7 +18,7 @@ wc_print_notices();
 
 ?>
 
-<p class="cart-empty"><?php _e( 'Your cart is currently empty.', 'woocommerce' ) ?></p>
+<p class="cart-empty"><?php _e( 'Your cart is currently empty.', 'woocommerce' ); ?></p>
 
 <?php do_action( 'woocommerce_cart_is_empty' ); ?>
-<p class="return-to-shop"><a class="button wc-backward" href="<?php echo esc_url( home_url() ); ?>"><?php _e( 'Go back to the homepage', 'woocommerce' ) ?></a></p>
+<p class="return-to-shop"><a class="button wc-backward" href="<?php echo icl_get_home_url(); ?>"><?php echo _e( 'Go back to the homepage', 'chroma' ); ?></a></p>

@@ -26,9 +26,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <?php do_action( 'woocommerce_email_before_order_table', $order, $sent_to_admin, $plain_text ); ?>
 
-<h2><?php printf( __( 'Order #%s', 'woocommerce' ), $order->get_order_number() ); ?> (<?php printf( '<time datetime="%s">%s</time>', date_i18n( 'c', strtotime( $order->order_date ) ), date_i18n( wc_date_format(), strtotime( $order->order_date ) ) ); ?>)</h2>
+<h4><?php printf( __( 'Order #%s', 'woocommerce' ), $order->get_order_number() ); ?> (<?php printf( '<time datetime="%s">%s</time>', date_i18n( 'c', strtotime( $order->order_date ) ), date_i18n( wc_date_format(), strtotime( $order->order_date ) ) ); ?>)</h4>
 
-<table class="table" id="c-invoice">
+<table <?php echo 'class="table"'; ?> class="table" id="c-invoice">
 	<thead>
 		<tr>
 			<th class="td" scope="col" style="text-align:left;"><?php _e( 'Product', 'woocommerce' ); ?></th>
@@ -67,10 +67,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</tfoot>
 </table>
 
-
-
-<?php do_action( 'woocommerce_email_after_order_table', $order, $sent_to_admin, $plain_text ); ?>
+<div class="email-meta">
+<?php do_action( 'woocommerce_email_after__table', $order, $sent_to_admin, $plain_text ); ?>
 
 <?php do_action( 'woocommerce_email_order_meta', $order, $sent_to_admin, $plain_text ); ?>
+</div>
 
 <?php do_action( 'woocommerce_email_footer' ); ?>

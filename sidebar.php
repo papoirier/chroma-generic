@@ -8,7 +8,7 @@
 
 		<ul class="nav navbar-right menu-right">
 			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="<?php echo get_stylesheet_directory_uri() ?>/img/btn-profile.svg" title="profile"></a>
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="<?php echo get_stylesheet_directory_uri() ?>/img/<?php if (WC()->cart->cart_contents_count > 0) { echo "btn-profile-cart.svg"; } else { echo "btn-profile.svg"; }?>" title="profile"></a>
 				<ul class="dropdown-menu">
 					<?php $items = apply_filters( "wp_nav_menu_{$menu->slug}_items", $items, $args ); ?>
 					<?php if ( is_user_logged_in() ) { ?>

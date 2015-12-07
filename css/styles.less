@@ -4,7 +4,7 @@
 @green-dark: 		#226440;
 @blue: 				#00476B;
 @bootstrap-blue: 	rgb(66, 139, 202);
-@verylightgray: 		#F1F1F1;
+@verylightgray: 	#F1F1F1;
 @white: 			rgba(255, 255, 255, 0.7);
 @darkgray:			rgb(51, 51, 51);
 @darkgray-alpha:	rgba(51, 51, 51, 0.7);
@@ -393,7 +393,6 @@ body.home section {
 		background-image: url('../img/wiggle-390.png');
 	}
 }
-
 #intro .container {
 	//position: absolute;
 }
@@ -424,35 +423,12 @@ img,
 	font-size: @font-size-base*0.8 !important;
 }
 
-
-/*
-.panel,
-.panel-group,
-.panel-group .panel-default,
-.panel-group .panel-heading,
-.panel-group .panel-heading+.panel-collapse>.panel-body,
-.panel-group .panel-body,
-.panel-group ol {
-	padding: 0;
-	border: none;
-	background-color: transparent;
-	border-radius: 0;
-	box-shadow: none;
+// 404 // --------------------------------
+@media (min-width: 768px) {
+	.four-o-four-page {
+		min-height: 300px;
+	}
 }
-.panel-default {
-	border-color: transparent;
-}
-.panel-group {
-}
-.panel-default {
-}
-.panel-heading {
-}
-.panel-collapse {
-}
-.panel-body {
-}
-*/
 
 // SHOP // -------------------------------
 
@@ -554,6 +530,14 @@ footer li.subtitle {
 	color: @midgray;
 }
 // SINGLE PRODUCT // -----------------------
+.product-type-simple .single-product {
+	padding: 2em 0;
+	border-top: 1px solid @darkgray;
+	border-bottom: 1px solid @darkgray;
+}
+h4.product_title {
+	margin-bottom: 4em;
+}
 .single-product-image img {
 	margin: 0 auto;
 }
@@ -699,8 +683,10 @@ _:-o-prefocus, .selector {
 
 
 // amount
-.variations span.amount {
+.variations span.amount,
+.price span.amount {
 	font-size: @font-size-h3;
+	font-weight: normal;
 }
 .quantity {
 	margin: 0 0 1em 0;
@@ -1053,6 +1039,9 @@ ul.woocommerce-error li strong{
 #mc_embed_signup .form-group {
 	display: block;
 }
+#mc_embed_signup .form-group input {
+	border-color: @lightgray;
+}
 #mc_embed_signup div.mce_inline_error {
 	font-weight: normal !important;
 	background-color: transparent !important;
@@ -1066,6 +1055,9 @@ ul.woocommerce-error li strong{
 	//background-color: @link;
 	//border: none;
 	margin-top: 1em;
+}
+input#mc-embedded-subscribe {
+	font-size: 18px;
 }
 
 // LOGIN // -------------------------------------------------
