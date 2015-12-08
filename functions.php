@@ -1,38 +1,35 @@
 <?php
 
-/*-----------------------------------------------------------------------------------
- * Start WooThemes Functions - Please refrain from editing this section
- *----------------------------------------------------------------------------------- */
+// Start WooThemes Functions - Please refrain from editing this section
 
 // Define the theme-specific key to be sent to PressTrends.
-define( 'WOO_PRESSTRENDS_THEMEKEY', 'zdmv5lp26tfbp7jcwiw51ix9sj389e712' );
+//define( 'WOO_PRESSTRENDS_THEMEKEY', 'zdmv5lp26tfbp7jcwiw51ix9sj389e712' );
 
 // WooFramework init
 require_once ( get_template_directory() . '/functions/admin-init.php' );
 
-/*-----------------------------------------------------------------------------------
- * Load the theme-specific files, with support for overriding via a child theme.
- *----------------------------------------------------------------------------------- */
 
-$includes = array(
-        'includes/theme-options.php',       // Options panel settings and custom settings
-        'includes/theme-functions.php',     // Custom theme functions
-        'includes/theme-actions.php',       // Theme actions & user defined hooks
-        'includes/theme-comments.php',      // Custom comments/pingback loop
-        'includes/theme-js.php',            // Load JavaScript via wp_enqueue_script
-        'includes/sidebar-init.php',        // Initialize widgetized areas
-        'includes/theme-widgets.php',       // Theme widgets
-        'includes/theme-install.php',       // Theme installation
-        'includes/theme-woocommerce.php',   // WooCommerce options
-        'includes/theme-plugin-integrations.php'  // Plugin integrations
-        );
+// Load the theme-specific files, with support for overriding via a child theme.
 
-//Allow child themes/plugins to add widgets to be loaded.
-$includes = apply_filters( 'woo_includes', $includes );
+// $includes = array(
+//     'includes/theme-options.php',       // Options panel settings and custom settings
+//     'includes/theme-functions.php',     // Custom theme functions
+//     'includes/theme-actions.php',       // Theme actions & user defined hooks
+//     //'includes/theme-comments.php',      // Custom comments/pingback loop
+//     'includes/theme-js.php',            // Load JavaScript via wp_enqueue_script
+//     //'includes/sidebar-init.php',        // Initialize widgetized areas
+//     //'includes/theme-widgets.php',       // Theme widgets
+//     //'includes/theme-install.php',       // Theme installation
+//     //'includes/theme-woocommerce.php',   // WooCommerce options
+//     //'includes/theme-plugin-integrations.php'  // Plugin integrations
+// );
 
-foreach ( $includes as $i ) {
-  locate_template( $i, true );
-}
+// // allow child themes/plugins to add widgets to be loaded
+// $includes = apply_filters( 'woo_includes', $includes );
+
+// foreach ( $includes as $i ) {
+//   locate_template( $i, true );
+// }
 
 
 // WOOCOMMERCE SETUP -------------------------------------
@@ -42,13 +39,8 @@ function woocommerce_support() {
     add_theme_support( 'woocommerce' );
 }
 
-// telling woocommerce to use my hooks
-// remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
-// add_action('woocommerce_before_main_content', 'my_theme_wrapper_start', 10);
-// remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
-// add_action('woocommerce_after_main_content', 'my_theme_wrapper_end', 10);
-
 // tell woocommerce not to use its style sheets
+add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
 add_filter( 'woocommerce_enqueue_styles', '__return_false' );
 
 
@@ -109,7 +101,6 @@ add_filter('woocommerce_available_variation', function ($value, $object = null, 
 remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20);
 remove_action( 'woocommerce_output_related_products', 20);
 
-
 function remove_loop_button(){
   remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
 }
@@ -126,7 +117,7 @@ function custom_from($price){
     return false;
 }
 
-// Ensure cart contents update when products are added to the cart via AJAX (place the following in functions.php)
+// Ensure cart contents update when products are added to the cart via AJAX
 add_filter( 'woocommerce_add_to_cart_fragments', 'woocommerce_header_add_to_cart_fragment' );
 function woocommerce_header_add_to_cart_fragment( $fragments ) {
   ob_start();
@@ -139,9 +130,16 @@ function woocommerce_header_add_to_cart_fragment( $fragments ) {
   return $fragments;
 }
 
-// GLOBAL ------------------------------------------------------
+// GLOBAL -------------------------------------------------------
 
-// PAGES -------------------------------------------------------
+// thumbnails
+add_theme_support( 'post-thumbnails' );
+
+// remove emoji crap
+remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+remove_action( 'wp_print_styles', 'print_emoji_styles' );
+remove_action( 'admin_print_styles', 'print_emoji_styles' );
 
 add_action('init', 'page_excerpt');
 function page_excerpt() {
@@ -156,42 +154,19 @@ function page_excerpt() {
 // hide admin bar
 show_admin_bar(false);
 
-add_theme_support( 'post-thumbnails' );
-
-function print_attributes($name, $count) {
-  //echo 'id="'.$name.'" class="full p-'.$count.'"';
-}
-
 // to get proper large images
 if ( ! isset( $content_width ) )
 	$content_width = 1024;
 
-// removing p tags
-//remove_filter( 'the_content', 'wpautop' );
-
-// widgets
-function arphabet_widgets_init() {
-  register_sidebar( array(
-    'name' => 'Home right sidebar',
-    'id' => 'home_right_1',
-    'before_widget' => '<div>',
-    'after_widget' => '</div>',
-    'before_title' => '<h2 class="rounded">',
-    'after_title' => '</h2>',
-  ) );
-}
-add_action( 'widgets_init', 'arphabet_widgets_init' );
-
 // remove class from the_post_thumbnail
 add_filter('post_thumbnail_html', 'the_post_thumbnail_remove_class');
 function the_post_thumbnail_remove_class($output) {
-        $output = preg_replace('/class=".*?"/', '', $output);
-        return $output;
+  $output = preg_replace('/class=".*?"/', '', $output);
+  return $output;
 }
 
 // add img-responsive class to images
 add_filter( 'post_thumbnail_html', 'wpc_add_image_responsive_class', 10 );
-//add_filter( 'the_content','wpc_add_image_responsive_class',10 );  
 function wpc_add_image_responsive_class( $html ){  
   $classes = 'img-responsive'; // separated by spaces, e.g. 'img image-link'  
   

@@ -1,8 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <?php $url = wp_get_attachment_url( get_post_thumbnail_id($page->ID, 'large') ); ?>
-      <img src="<?php echo $url; ?>" class="">
+      <?php if (has_post_thumbnail( $loop->post->ID )) {
+        the_post_thumbnail( 'large' );
+      } ?>
     </div>
   </div>
 

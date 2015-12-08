@@ -1,7 +1,7 @@
 function fullIntro() {
   var h = jQuery(window).height();
   var w = jQuery(window).width();
-  jQuery('.full').css("min-height", (h*0.95)-60);
+  jQuery('.full').css("min-height", h);
 }
 
 jQuery(document).ready(function($) {

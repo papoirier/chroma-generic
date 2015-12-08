@@ -20,8 +20,9 @@
 		<div class="row">
 			<div class="col-md-4 col-sm-6 intro-brand">
 				<div class="intro-logo">
-					<?php $url = wp_get_attachment_url( get_post_thumbnail_id($page->ID, 'large') ); ?>
-					<img src="<?php echo $url ?>" class="logo img-responsive">
+		            <?php if (has_post_thumbnail( $loop->post->ID )) {
+		                the_post_thumbnail( 'large' );
+		            } ?>
 				</div>
 				<div class="intro-mobile-img">
 					<img src="<?php echo get_stylesheet_directory_uri() ?>/img/mobile-felt.png" class="img-responsive">
