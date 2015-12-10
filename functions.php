@@ -152,7 +152,7 @@ function page_excerpt() {
 @ini_set( 'max_execution_time', '300' );
 
 // hide admin bar
-show_admin_bar(false);
+//show_admin_bar(false);
 
 // to get proper large images
 if ( ! isset( $content_width ) )

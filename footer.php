@@ -62,6 +62,6 @@
 		</div> <!-- .container  -->
 	</footer>
 	<?php wp_footer(); ?>
-	<?php include_once('analytics-tracking.php') ?>
+	<?php get_template_part('analytics-tracking.php') ?>
 </body>
 </html>
