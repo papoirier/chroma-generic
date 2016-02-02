@@ -1,6 +1,8 @@
 <?php
 /**
- * Email Addresses (plain)
+ * Additional Customer Details (plain)
+ *
+ * This is extra customer data which can be filtered by plugins. It outputs below the order item table.
  *
  * This template can be overridden by copying it to yourtheme/woocommerce/emails/plain/email-addresses.php.
  *
@@ -12,17 +14,15 @@
  * @see 	    http://docs.woothemes.com/document/template-structure/
  * @author 		WooThemes
  * @package 	WooCommerce/Templates/Emails/Plain
- * @version     2.2.0
+ * @version     2.5.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-echo "\n" . strtoupper( __( 'Billing address', 'woocommerce' ) ) . "\n\n";
-echo preg_replace( '#<br\s*/?>#i', "\n", $order->get_formatted_billing_address() ) . "\n";
+echo strtoupper( __( 'Customer details', 'woocommerce' ) ) . "\n\n";
 
-if ( ! wc_ship_to_billing_address_only() && $order->needs_shipping_address() && ( $shipping = $order->get_formatted_shipping_address() ) ) {
-	echo "\n" . strtoupper( __( 'Shipping address', 'woocommerce' ) ) . "\n\n";
-	echo preg_replace( '#<br\s*/?>#i', "\n\t", $shipping ) . "\n";
+foreach ( $fields as $field ) {
+    echo wp_kses_post( $field['label'] ) . ': ' . wp_kses_post( $field['value'] ) . "\n";
 }

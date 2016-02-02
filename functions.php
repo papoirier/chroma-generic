@@ -42,7 +42,17 @@ function woocommerce_support() {
 // tell woocommerce not to use its style sheets
 add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
 add_filter( 'woocommerce_enqueue_styles', '__return_false' );
+add_action( 'wp_enqueue_scripts', 'mgt_dequeue_stylesandscripts', 100 );
+function mgt_dequeue_stylesandscripts() {
+    if ( class_exists( 'woocommerce' ) ) {
+        wp_dequeue_style( 'select2' );
+        wp_deregister_style( 'select2' );
 
+        wp_dequeue_script( 'select2');
+        wp_deregister_script('select2');
+
+    } 
+} 
 
 // PRODUCT PAGE ----------------------------------------
 
@@ -53,7 +63,7 @@ add_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_produ
 // removing the tabs
 add_filter( 'woocommerce_product_tabs', 'woo_remove_product_tabs', 98 );
 function woo_remove_product_tabs( $tabs ) {
-    //unset( $tabs['description'] );
+    unset( $tabs['description'] );
     unset( $tabs['reviews'] );
     //unset( $tabs['additional_information'] );
     return $tabs;
@@ -78,6 +88,42 @@ remove_action( 'woocommerce_single_product_summary', 'woocommerce_output_product
 
 // remove 'additional information' heading
 //add_filter('woocommerce_product_additional_information_heading','__return_null');
+
+
+/**
+ * Define image sizes
+ */
+function yourtheme_woocommerce_image_dimensions() {
+  global $pagenow;
+ 
+  if ( ! isset( $_GET['activated'] ) || $pagenow != 'themes.php' ) {
+    return;
+  }
+    $catalog = array(
+    'width'   => '400', // px
+    'height'  => '400', // px
+    'crop'    => 1    // true
+  );
+
+  $single = array(
+    'width'   => '500', // px
+    'height'  => '500', // px
+    'crop'    => 1    // true
+  );
+
+  $thumbnail = array(
+    'width'   => '120', // px
+    'height'  => '120', // px
+    'crop'    => 0    // false
+  );
+
+  // Image sizes
+  update_option( 'shop_catalog_image_size', $catalog );     // Product category thumbs
+  update_option( 'shop_single_image_size', $single );     // Single product image
+  update_option( 'shop_thumbnail_image_size', $thumbnail );   // Image gallery thumbs
+}
+
+add_action( 'after_switch_theme', 'yourtheme_woocommerce_image_dimensions', 1 );
 
 add_filter('woocommerce_product_additional_information_heading','isa_product_additional_information_heading');
 function isa_product_additional_information_heading() {

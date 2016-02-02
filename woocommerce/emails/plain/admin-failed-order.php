@@ -1,12 +1,12 @@
 <?php
 /**
- * Customer refunded order email (plain text)
+ * Admin failed order email (plain text)
  *
- * This template can be overridden by copying it to yourtheme/woocommerce/emails/plain/customer-refunded-order.php.
+ * This template can be overridden by copying it to yourtheme/woocommerce/emails/plain/admin-failed-order.php
  *
- * HOWEVER, on occasion WooCommerce will need to update template files and you (the theme developer).
- * will need to copy the new files to your theme to maintain compatibility. We try to do this.
- * as little as possible, but it does happen. When this occurs the version of the template file will.
+ * HOWEVER, on occasion WooCommerce will need to update template files and you (the theme developer)
+ * will need to copy the new files to your theme to maintain compatibility. We try to do this
+ * as little as possible, but it does happen. When this occurs the version of the template file will
  * be bumped and the readme will list any important changes.
  *
  * @see 	    http://docs.woothemes.com/document/template-structure/
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 echo "= " . $email_heading . " =\n\n";
 
-echo sprintf( __( "Hi there. Your order on %s has been refunded. Your order details are shown below for your reference:", 'woocommerce' ), get_option( 'blogname' ) ) . "\n\n";
+echo sprintf( __( 'Payment for order #%d from %s has failed. The order was as follows:', 'woocommerce' ), $order->id, $order->get_formatted_billing_full_name() ) . "\n\n";
 
 echo "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n";
 

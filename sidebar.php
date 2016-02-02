@@ -16,7 +16,7 @@ global $woo_options;
 					<?php $items = apply_filters( "wp_nav_menu_{$menu->slug}_items", $items, $args ); ?>
 					<?php if ( is_user_logged_in() ) { ?>
 				 	<li><a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" title="<?php _e('My Account','chroma'); ?>"><?php _e('My Account','chroma'); ?></a></li>
-				 	<li><a class="cart-contents" href="<?php echo WC()->cart->get_cart_url(); ?>" title="<?php _e( 'Cart','chroma'); ?>"><?php echo _e( 'Cart ','chroma') ; echo sprintf (_n( '(%d)', '(%d)', WC()->cart->cart_contents_count ), WC()->cart->cart_contents_count ); ?></a></li>
+				 	<li><a class="cart-contents" href="<?php echo WC()->cart->get_cart_url(); ?>" title="<?php _e( 'Cart','chroma'); ?>"><?php echo _e( 'Cart ','chroma'); echo sprintf (_n( '(%d)', '(%d)', WC()->cart->cart_contents_count ), WC()->cart->cart_contents_count ); ?></a></li>
 				 	<?php
 					printf(
 						__( '<li><a href="%2$s">Sign out</a></li>', 'woocommerce' ) . ' ',

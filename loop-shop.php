@@ -10,9 +10,9 @@
         <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
             <?php $url = wp_get_attachment_url( get_post_thumbnail_id($loop->ID) ); ?>
             <?php if (has_post_thumbnail( $loop->post->ID )) {
-                the_post_thumbnail( 'medium' );
+                the_post_thumbnail( 'thumbnail' );
             } ?>
-           <h4 class="text-center"><?php echo apply_filters( 'woocommerce_short_description', $post->post_excerpt ) ?></h4>
+           <h4 class="text-center"><?php echo get_the_title(); ?></h4>
         </a>
     </li>
 <?php } else { ?>
@@ -20,9 +20,9 @@
         <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
             <?php $url = wp_get_attachment_url( get_post_thumbnail_id($loop->ID) ); ?>
             <?php if (has_post_thumbnail( $loop->post->ID )) {
-                the_post_thumbnail( 'medium' );
+                the_post_thumbnail( 'thumbnail' );
             } ?>
-           <h4 class="text-center"><?php echo apply_filters( 'woocommerce_short_description', $post->post_excerpt ) ?></h4>
+           <h4 class="text-center"><?php echo get_the_title(); ?></h4>
         </a>
     </li>
 <?php } ?>

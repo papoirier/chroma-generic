@@ -39,6 +39,12 @@ jQuery(document).ready(function($) {
   $("#pa_color").after('<span class="caret">');
   $("#pa_length").after('<span class="caret">');
 
+
+  $("form.checkout select").after('<span class="caret">');
+  //var addToCart = $("div.woocommerce-variation-add-to-cart").insertAfter("div.content");
+
+  // -------------------------------------------------------
+
   $(window).resize(function(){
     if ($(window).width() > 767) {
       fullIntro();

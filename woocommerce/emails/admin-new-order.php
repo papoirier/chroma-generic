@@ -4,7 +4,7 @@
  *
  * @author WooThemes
  * @package WooCommerce/Templates/Emails/HTML
- * @version 2.4.0
+ * @version 2.5.0
  *
  * --- MOD ---
  *
@@ -51,10 +51,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</tfoot>
 </table>
 
-<?php do_action( 'woocommerce_email_after_order_table', $order, true, false ); ?>
+ <?php
 
-<?php do_action( 'woocommerce_email_order_meta', $order, true, false ); ?>
+ /**
+  * @hooked WC_Emails::order_details() Shows the order details table.
+  * @since 2.5.0
+  */
+ do_action( 'woocommerce_email_order_details', $order, $sent_to_admin, $plain_text, $email );
 
-<?php do_action( 'woocommerce_email_customer_details', $order, $sent_to_admin, $plain_text ); ?>
+ /**
+  * @hooked WC_Emails::order_meta() Shows order meta data.
+  */
+ do_action( 'woocommerce_email_order_meta', $order, $sent_to_admin, $plain_text, $email );
 
-<?php do_action( 'woocommerce_email_footer' ); ?>
+ /**
+  * @hooked WC_Emails::customer_details() Shows customer details
+  * @hooked WC_Emails::email_address() Shows email address
+  */
+ do_action( 'woocommerce_email_customer_details', $order, $sent_to_admin, $plain_text, $email );
+
+ /**
+  * @hooked WC_Emails::email_footer() Output the email footer
+  */
+ do_action( 'woocommerce_email_footer', $email );

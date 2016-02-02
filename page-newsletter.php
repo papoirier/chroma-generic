@@ -40,7 +40,7 @@ while ( have_posts() ) : the_post();
 
 		<div class="row">
             <div class="col-md-6 col-md-offset-3">
-                <?php get_template_part('mailchimp.php'); ?>
+                <?php include_once('mailchimp.php'); ?>
             </div>
         </div>
 

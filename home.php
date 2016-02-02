@@ -37,7 +37,7 @@
 </section> <!-- /#intro -->
 
 <!-- THE FELT - - - - - - - - - - - - - - -  -->
-<section id="the-felt" class="full">
+<section id="the-felt">
 <?php // FELT // live -> 541 // local -> 68 ?>
 <?php $my_query = new WP_Query( 'page_id=541' ); ?>
 <?php if ( $my_query->have_posts() ) : ?>
